@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .radio-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    padding: 10px 20px;
+    background-color: #2b3a4b;
+    color: white;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    text-align: center;
+    width: 100px;
+}
+
+input[type="radio"]:checked + label {
+    background-color: #475e7b;
+    border-color: #00aeff;
+}
+
+label:hover {
+    background-color: #3a4d66;
+}
+
+    </style>
+</head>
+<body>
+    <div class="radio-buttons">
+        <input type="radio" id="bluetooth" name="connection" value="bluetooth">
+        <label for="bluetooth">Bluetooth</label>
+    
+        <input type="radio" id="signals" name="connection" value="signals">
+        <label for="signals">Signals</label>
+    
+        <input type="radio" id="usb" name="connection" value="usb">
+        <label for="usb">USB</label>
+    
+        <input type="radio" id="wimax" name="connection" value="wimax">
+        <label for="wimax">Wimax</label>
+    </div>
+    
+</body>
+</html>
