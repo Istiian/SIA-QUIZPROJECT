@@ -2,26 +2,24 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: url('/images/sword.png'), auto;
 }
 :root{
     --primary:	22, 66, 60;
-    /* --primary:#16423c   ; */
-    --secondary: 106, 156, 137 ;
+    --secondary: 106, 156, 137;
     --accent: 255,193,7; 
-    --black: #151515;
-    --white:#fcfcfc;
-
+    --black: 21,21,21;
+    --white:252,252,252;
     --p:"Source Sans Pro", sans-serif;
     --h:"Montserrat", sans-serif;
-    --h1: 64px;
-    --h2: 48px;
-    --h3: 36px;
-    --h4: 30px;
-    --body: 18px;
-    --label: 16px;
-    --link: 18px;
-    --small: 14px;
+    --h1: clamp(2.5rem, 5vw, 4rem);  /* Adjusts between 40px and 64px */
+    --h2: clamp(2rem, 4vw, 3rem);    /* Adjusts between 32px and 48px */
+    --h3: clamp(1.5rem, 3vw, 2.25rem); /* Adjusts between 24px and 36px */
+    --h4: clamp(1.25rem, 2.5vw, 1.875rem); /* Adjusts between 20px and 30px */
+    --body: clamp(1rem, 2vw, 1.125rem);  /* Adjusts between 16px and 18px */
+    --label: clamp(0.875rem, 1.5vw, 1rem);  /* Adjusts between 14px and 16px */
+    --link: clamp(1rem, 2vw, 1.125rem);  /* Adjusts between 16px and 18px */
+    --small: clamp(0.75rem, 1vw, 0.875rem);  /* Adjusts between 12px and 14px */
+  
 }
 
 /* Navigation */
@@ -36,66 +34,137 @@ body{
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
-    cursor: url('/images/sword.png'), auto;
+    color: rgb(var(--white));
 }
-.navbar{
-    background-color: rgba(106, 156, 137, 0.5);
-}
-[class*="nav-link"]{
-    color: var(--white);
-    font-family: var(--p);
-    font-size: var(--link);
-    font-weight: 500;
-    cursor: url('/images/search.png'), auto;
-    box-sizing: border-box;
-    height: auto;
-    border-radius: 10px;
-    /* transition: 0.2s ease; */
+#NavBar{
+    width: 100%;
+    display: flex;
+    background-color: rgba(var(--secondary), 0.8);
+    height: 60px;
+    justify-content: space-around;
+    align-items: center;
     
 }
-[class*="nav-link"]:hover{
-    color: var(--white);
-    background-color: rgba(var(--primary),0.3);
+#NavBar img{
+    width: 300px;
+    height:50px;
+    margin-left: 20px;
 }
-#pot{
-    background-color: rgb(var(--accent));
-    color: var(--black);
-    border-radius: 5px;
-    padding: 3px 5px;
-    font-size: var(--link);
-    border: none;
-    cursor: url('/images/search.png'), auto;
+#AppTitle{
+    font-size: 35px;
+    font-family: var(--h);
+    color: rgb(var(--white));
+    text-decoration: none;
+    font-weight: bold;
+    
+    transition: 0.2s ease;
+}
+#AppTitle:hover{
+    color: rgb(var(--primary));
+}
+#LinkContainer a{
+    text-decoration: none;
+    color: rgb(var(--white));
+    font-size: var(--label);
+    padding: 12px;
+    margin-inline:5px;
+    font-weight: bold;
+    font-family: var(--h);
+    border-radius: 20px;
     transition: 0.3s ease;
 }
-#pot:hover{
+.LinkActive{
+    background-color: rgba(var(--primary),0.3);
+    border-radius: 20px;
+}
+#LinkContainer a:hover{
+    cursor: pointer;
+    color: rgba(var(--primary), 1);
+}
+
+#linkContainer{
+    display: flex;
+    justify-content: space-between;
+}
+#BarBtn{
+    font-size:30px;
+    color: rgb(var(--white));
+    display: none;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.RegisterBtn{
+    width: 100px;
+    height: 40px;
+    background-color: rgba(var(--primary), 0.3);
+    border: 3px solid rgb(var(--accent));
+    color: rgb(var(--accent));
+    font-weight: bold;
+    border-radius: 20px;
+    transition: 0.3s ease;
+}
+.RegisterBtn:hover{
+    scale: 95%;
+    background-color: rgba(var(--primary),0.9);
+    border: none;
+    color: rgb(var(--white));
+}
+#BarBtn:hover{
+    color:rgb(var(--primary));
+}
+#XBtn{
+    font-size: 30px;
+    color: var(--white);
+    display: none;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+#DropDownLinks li{
+    list-style: none;
+    animation: 1s ease;
+    
+}
+ #DropDownLinks .DropDownLink{
+    background-color: rgba(var(--primary), 1);
+    width: 100%;
+    color: var(--white);
+    padding: 5px;
+    border-bottom: 1px solid rgb(var(--white));
+    display: block;
+    text-align:center;
+    transition: transform 0.3s ease, opacity 0.3s ease-in-out;
+}
+#DropDownLinks .DropDownLink:hover{
+    color: rgb(var(--secondary));
+}
+#DropDownLinks .DropDownLink a{
+    text-decoration: none;
+    font-family: var(--h);
+    font-size: 24px;
+    color: var(--white);
+    font-weight: bold;
+    width: 100%;
+}
+.dropdown{
+    width: 120px;
+    text-overflow: ellipsis;
+    height: 40px;
+    background-color: rgb(var(--accent));
+    border: 1px solid rgb(var(--primary));
+    color: rgb(var(--primary));
+    font-weight: bold;
+    border-radius: 10px;
+    transition: transform 0.3s ease, opacity 0.3s ease-in-out;
+}
+.dropdown:hover{
     background-color: rgba(var(--accent),0.9);
     scale: 95%;
 }
-.fa-bars{
-    color: var(--white);
-    font-size: 25px;
+.Navdropdown{
+    margin-inline: auto;
 }
-.title{
-    font-size: 35px;
-    font-family: var(--h);
-    color: var(--white);
-    text-decoration: none;
-    font-weight: bold;
-    cursor: url('/images/search.png'), auto;
-    transition: 0.3s ease;
-}
-.title:hover{
-    color: rgb(var(--primary));
-}
-#LightDark{
-    background-color: rgb(var(--secondary));
-    border: none;
 
-}
-.fa-regular{
-    color: rgb(var(--accent));
-    font-size: 20px;
-}
 
 .ContentContainer{
     width: 90%;
@@ -103,7 +172,7 @@ body{
     /* padding-top: 5px; */
     margin-top: clamp(50px, 10vw, 100px);
     background-color: rgba(var(--secondary),0.5);
-    color: var(--black);
+    color: var(--white);
     padding: 20px;
     border-radius: 15px;
     margin-bottom: 50px;
@@ -141,7 +210,6 @@ body{
     background: rgba(var(--primary),0.5);
     border:1px solid rgb(var(--primary)) ;
     color: var(--white);
-    cursor: url('/images/sword-pointer.png'), auto;
 }
 input{
     padding: 6px;
@@ -152,7 +220,6 @@ input::placeholder{
 select option{
     background: rgba(var(--secondary),1);
     color: var(--white);
-    cursor: url('/images/sword-pointer.png'), auto;
     padding: 5px;
 }
 select option:hover{
@@ -163,19 +230,17 @@ select option:hover{
     width: 150px;
     height: 40px;
     background-color: rgb(var(--accent));
-    color: var(--black);
+    color: rgb(var(--black));
     outline: none;
     border-radius: 5px;
     float: right;
     margin-top: 5px;
     font-weight: 500;
     border: none;
-    cursor: url('/images/sword-pointer.png'), auto;
 }
 button[type="submit"]:hover{
     scale: 95%;
     background-color: rgba(var(--accent), 0.9);
-    cursor: url('/images/sword-pointer.png'), auto;
 }
 footer{
     width: 100%;
@@ -204,18 +269,15 @@ footer{
     text-decoration: none;
     font-size: var(--link);
     padding-top: 5px;
-    cursor: url('/images/search.png'), auto;
 }
 .footerContainer:nth-child(1) a:hover{
     color: rgb(var(--secondary));;
 }
-
 .footerContainer:nth-child(2) a i{
     color: var(--white);
     font-size: var(--body);
     border-radius: 50%;
     padding: 5px;
-    cursor: url('/images/search.png'), auto;
     transition: 0.3s ease;
 }
 .footerContainer:nth-child(2) a i:hover{
@@ -227,8 +289,53 @@ footer{
     color: var(--white);
 }
 
+#DropDownLinks {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    right: 100%;
+    padding: 0;
+    top: 60px;
+    transition: transform 0.3s ease, opacity 0.3s ease-in-out;
+}
+
+/* JS Classes */
+#XBtn.fa-x.active {
+    display: inline-block;
+}
+#BarBtn.fa-bars.inactive{
+    display: none;
+}
+#XBtn.fa-x.inactive {
+    display: none;
+}
+#BarBtn.fa-bars.active {
+    display: inline-block;
+}
+#DropDownLinks.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(100%);
+}
+@media only screen and (max-width: 900px){
+    #NavBar{
+        justify-content: space-between;
+    }
+    #LinkContainer{
+        display: none;
+    }#BarBtn{
+        display: inline-block;
+    }#HideBtn{
+        display: none;
+    }#HideUserBtn{
+        display: none;
+    }
+}
 @media screen and (max-width: 991px) {
     #pot{
         width: 120px;
     }
 }
+
