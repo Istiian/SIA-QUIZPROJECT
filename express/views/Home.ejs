@@ -25,15 +25,15 @@
             <a href="/QuizGenRouter">GeoChallenge</a>
             
         </div>
-        <!-- <button class="RegisterBtn" id="HideBtn">Register</button> -->
-        <div class="dropdown" id="HideUserBtn">
+        <button class="RegisterBtn" id="HideBtn">Sign In</button>
+        <!-- <div class="dropdown" id="HideUserBtn">
             <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 Username
             </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li class="LogoutBtn dropdown-item">Log out</li>                        
                 </ul>
-        </div>
+        </div> -->
         <i class="fa-solid fa-bars" id="BarBtn"></i>
         <i class="fa-solid fa-x" id=XBtn></i>
     </nav>
@@ -42,8 +42,8 @@
         <li class="DropDownLink"><a href="/LearnMoreRouter">Learn More</a></li>
         <li class="DropDownLink"><a href="/AboutRouter">About</a></li>
         <li class="DropDownLink"><a href="/QuizGenRouter">GeoChallenge</a></li>
-        <!-- <li><button class="RegisterBtn">Register</button></li> -->
-         <li class="DropDownLink">
+        <li class="DropDownLink"><button class="RegisterBtn">Sign In</button></li>
+         <!-- <li class="DropDownLink">
             <div class="dropdown Navdropdown">
                 <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     Username
@@ -52,12 +52,84 @@
                         <li class="LogoutBtn dropdown-item">Log out</li>                        
                     </ul>
             </div>
-         </li>
+         </li> -->
     </ul>
+
+    <div class="OuterContainer">
+
+        <div class="InnerContainer">
+
+            <div class="row SignInContainer">
+                <div class="col-md-6 col-sm-12 ImageContainer">
+                    <h1 class="ImageContainerHeading">GeoQuest</h1>
+                    <p class="ImageContainerDescription">"Test your geography knowledge with our ultimate quiz!"</p>
+                </div>
+                <div class="col-md-6 col-sm-12 FormContainer">
+                    <i class="fa-solid fa-x XFormBtn" id=""></i>
+                    <h4 class="SignInHead">Sign In</h4>
+    
+                    <form action="/ProcessRouter" method="post">
+                        <div class="InputContainer">
+                            <label for="Username">Username:</label>
+                            <input type="text" name="Username" required>
+                        </div>
+    
+                        <div class="InputContainer">
+                            <label for="Password">Password:</label>
+                            <input type="password" name="Password" required>
+                        </div>
+    
+                        <span>New to GeoQuest? <p class="SignUpLink">Join GeoQuest!</p></span>
+    
+                        <button type="submit" name = "Process" value="SignIn" class="SignInBtn">Sign In</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row SignUpContainer">
+                <div class="col-sm-12 FormContainer">
+                    <h4 class="SignInHead">Sign Up</h4>
+                    <form action="/ProcessRouter" method="post">
+                        <div class="InputContainer">
+                            <label for="Username">Username:</label>
+                            <input type="text" name="CreateUsername" required>
+                        </div>
+
+                        <div class="InputContainer">
+                            <label for="Password">Password:</label>
+                            <input type="password" name="CreatePassword" required>
+                        </div>
+
+                        <div class="InputContainer">
+                            <label for="Password">Confirm Password:</label>
+                            <input type="password" name="CreateConfirmPassword" required>
+                        </div>
+
+                        <span>Already a GeoQuest Member? <p class="SignInLink">Sign In</p></span>
+
+                        <button type="submit" name = "Process" value="SignUp" class="SignInBtn">Sign Up</button>
+                    </form>
+                </div>
+                <div class="col-md-6 col-sm-12 ImageContainer">
+                    <i class="fa-solid fa-x XFormBtn" ></i>
+
+                    <div class="sideImages">
+                        <img src="/images/Learn.png" alt="">
+                        <p>Learn</p>
+                        <img src="/images/Explore.png" alt="">
+                        <p>Explore</p>
+                        <img src="/images/Conquer.png" alt="">
+                        <p>Conquer</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 <!-- contents -->
     <div class="HeadContainer">
-        <h1>Welcome to <span>GeoQuest!</span></h1>
+        <h1>Welcome to GeoQuest!</h1>
         <p>"Test your geography knowledge with our ultimate quiz!"</p>
     </div>
 
@@ -110,6 +182,46 @@
             BarBtn.classList.toggle("inactive");
             DropDownLinks.classList.remove("active");
         }
+
+        const RegisterBtns = document.querySelectorAll(".RegisterBtn");
+        const InnerContainer = document.querySelector(".InnerContainer");
+        const OuterContainer = document.querySelector(".OuterContainer");
+        const SignInContainer = document.querySelector(".SignInContainer");
+        const SignUpContainer = document.querySelector(".SignUpContainer");
+        const XFormBtns = document.querySelectorAll(".XFormBtn");
+        const SignUpLink = document.querySelector(".SignUpLink");
+        const SignInLink = document.querySelector(".SignInLink")
+
+        RegisterBtns.forEach(RegisterBtn => {
+            RegisterBtn.onclick = function(){
+            OuterContainer.classList.add("active");
+            InnerContainer.classList.add("active");
+            SignInContainer.classList.add("active");
+            document.body.classList.add("noScroll");
+            }
+        });
+        
+
+        XFormBtns.forEach(XFormBtn => {
+            XFormBtn.onclick = function(){
+            document.body.classList.remove("noScroll");
+            OuterContainer.classList.remove("active");
+            InnerContainer.classList.remove("active");
+            SignUpContainer.classList.remove("active");
+            SignInContainer.classList.remove("active");
+        }
+        });
+
+        SignInLink.onclick = function (){
+            SignInContainer.classList.add("active");
+            SignUpContainer.classList.remove("active");
+        }
+
+        SignUpLink.onclick = function (){
+            SignInContainer.classList.remove("active");
+            SignUpContainer.classList.add("active");
+        }   
+
 
      </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
