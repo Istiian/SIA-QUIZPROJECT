@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     color: rgb(var(--white));
+    font-family: var(--p);
 }
 :root{
     --primary:	22, 66, 60;
@@ -25,11 +26,7 @@
 
 /* Navigation */
 body{
-    /* background: linear-gradient(180deg, rgba(224,224,224,1) 27%, rgba(255,255,255,1) 54%); */
     background: url('/images/Background.png');
-    /* background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center; */
     background-color: rgb(var(--primary));
     display: flex;
     flex-direction: column;
@@ -44,6 +41,10 @@ body{
     justify-content: space-around;
     align-items: center;
     
+}
+.LogoutBtn:active, .LogoutBtn:hover{
+    background-color: rgba(var(--primary),0.2);
+    cursor: pointer;
 }
 #NavBar img{
     width: 300px;
@@ -147,7 +148,7 @@ body{
     width: 100%;
 }
 .dropdown{
-    width: 120px;
+    width: auto;
     text-overflow: ellipsis;
     height: 40px;
     background-color: rgb(var(--accent));
@@ -155,7 +156,7 @@ body{
     color: rgb(var(--primary));
     font-weight: bold;
     border-radius: 10px;
-    transition: transform 0.3s ease, opacity 0.3s ease-in-out;
+    transition: 0.3s ease
 }
 .dropdown:hover{
     background-color: rgba(var(--accent),0.9);
@@ -165,240 +166,48 @@ body{
     margin-inline: auto;
 }
 
-/* Sign In and Sign Up Container */
-
-.noScroll{
-    overflow: hidden;
-}
-.OuterContainer{
-    width: 100%;
-    height: 100%;
-    background-color: rgba(var(--black),0.8);
-    color: var(--white);
-    padding: 0px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    z-index: 3;
-    opacity: 0;
-    visibility: hidden;
-    
-}
-.OuterContainer.active{
-    opacity: 1;
-    visibility: visible;
-}
-
-.InnerContainer{
-    width: 100%;
-    max-width: 700px;
-    
-    height: auto;
-    background-color: rgba(var(--secondary),1);
-    border-radius: 20px;
-    position: relative;
-    top: 25%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(0.5);
-    transition: 0.3s ease;
-}
-.InnerContainer.active{
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
-}
-.SignInContainer{
-    width: 100%;
-    position: absolute;
-    background-color: rgba(var(--secondary),1);
-    border-radius: 20px;
-    z-index: 4;
-    transition: 0.3s ease;
-    visibility: hidden;
-    opacity: 0;
-    transform: scale(0.5);
-}
-.SignInContainer.active{
-    visibility: visible;
-    opacity: 1;
-    transform: scale(1);
-}
-.SignUpContainer{
-    width: 100%;
-    position: absolute;
-    background-color: rgba(var(--secondary),1);
-    border-radius: 20px;
-    z-index: 3;
-    visibility: hidden;
-    opacity: 0;
-    transform: scale(0.5);
-    
-}
-.SignUpContainer.active{
-    visibility: visible;
-    opacity: 1;
-    transform: scale(1);
-}
-.SignUpContainer .FormContainer{
-    width: calc(100% - 70px)
-}
-.SignUpContainer .ImageContainer{
-    width: 70px;
-    background-color: rgb(var(--primary));
-    border-radius: 0px 20px 20px 0px;
-}
-.SignUpContainer .sideImages{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 55px;
-}
-.sideImages img{
-    width: 50px;
-    height: 50px;
-    margin-inline: auto;
-    margin-top: 20px;
-}
-.sideImages p{
-    text-align: center;
-    font-size: 10px;
-}
-.XFormBtn{
-    font-size: 15px;
-    float: right;
-    padding: 5px;
-    border-radius: 50%;
-    margin-top: 10px;
-    cursor: pointer;
-}
-#XFormBtn:hover{
-    background-color: rgba(var(--primary),0.3);
-}
-.SignInContainer .ImageContainer{
-    width: 50%;
-    background:url("/images/GeoQuest.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 20px 0px 0px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.SignInContainer .FormContainer{
-    width: 50%;
-    border-radius: 0px 20px 20px 0px;
-}
-
-.ImageContainerHeading{
-    color: rgb(var(--white));
-    font-family: var(--h);
-    font-size: var(--h2);
-    font-weight: bold;
-}
-.ImageContainerDescription{
-    color: rgb(var(--white));
-    font-family: var(--p);
-    font-size: var(--label);
-    text-align: center;
-}
-.SignInHead{
-    font-size: var(--h4);
-    font-family: var(--h);
-    color: rgb(var(--white));
-    
-    font-weight: bold;
-    text-align: center;
-    margin-top: 30px;
-}
-.InputContainer{
-    flex-direction: column;
-    display: flex;
-    gap: 5px;
-    margin-bottom: 10px;
-}
-
-.InputContainer label{
-    font-family: var(--p);
-    color: rgb(var(--white));
-    font-size:var(--label);
-}
-.InputContainer input{
-    width: 100%;
-    height: 30px;
-    border: 2px solid rgba(var(--primary), 1);
-    background-color: rgba(var(--primary), 0.3);
-    color: white;
-    padding: 3px;
-}
-.SignInBtn{
-    width: 100px;
-    background-color: rgb(var(--accent));
-    color: rgb(var(--black));
-    height: 30px;
-    border-radius: 15px;
-    border: none;
-    margin-top: 10px;
-    position: relative;
-    left: calc(100% - 100px);
-    transition: 0.3s ease;
-    margin-bottom: 20px;
-}
-.SignInBtn:hover{
-    scale: 95%;
-}
-form{
-    display: flex;
-    flex-direction: column;
-}
-span{
-    font-size: var(--label);
-    color: rgb(var(--white));
-    font-family: var(--p);
-    margin-top: 5px;
-}
-span p{
-    text-decoration: none;
-    font-size: var(--label);
-    color: rgb(var(--accent));
-    font-family: var(--p);
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.3s ease;
-    display: inline;
-}
-span a:hover{
-    color: rgba(var(--primary), 1);
-}
-@media only screen and (max-width: 900px){
-    #NavBar{
-        justify-content: space-between;
-    }
-    #LinkContainer{
-        display: none;
-    }#BarBtn{
-        display: inline-block;
-    }#HideBtn{
-        display: none;
-    }#HideUserBtn{
-        display: none;
-    }
-}
-@media screen and (max-width: 550px) {
-    .SignInContainer .ImageContainer{
-        display: none;
-    }.SignInContainer .FormContainer{
-        width: 100%;
-    }
-}
 /* contents */
+.QuizNav{
+    width: 100%;
+    background-color: rgba(var(--secondary), 1);
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.QuizNav.hide{
+    display: none;
+}
+.QuizNavContainers small{
+    vertical-align: top; 
+    font-size: 12px;
+    margin-bottom: 10px;
+    font-family: var(--h);
+    
+}
+.QuizNavContainers{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.HighScoreDisplay{
+    font-size: var(--h4);
+    color: rgb(var(--white));
+    font-family: var(--p);
+    text-align: center;
+    margin: 0;
+}
+#timerDisplay{
+
+    font-size: var(--h4);
+    color: rgb(var(--white));
+    text-align: center;
+    font-family: var(--p);
+    margin: 0;
+}
 .mainContent{
     max-width: 800px;
     width: 90%;
@@ -415,22 +224,23 @@ span a:hover{
 .mainContent h4.show{
     display: block;
 }
-.quizContainer{
+
+.QuestionContainer{
     width: 100%;
-    background: rgba(var(--secondary),.3);
+    background: rgba(var(--secondary),1);
     padding: 12px;
     margin-top: 25px;
     border-radius: 10px;
     overflow: hidden;
-   
+    
 }
-.quizContainer p{
+.QuestionContainer p{
     font-size: var(--body);
 }
-.quizContainer.correct{
+.QuestionContainer.correct{
     border-left: 10px solid rgb(46, 204, 113);
 }
-.quizContainer.incorrect{
+.QuestionContainer.incorrect{
     border-left: 10px solid rgb(231, 76, 60);
 }
 .choicesContainer{
@@ -474,10 +284,11 @@ span a:hover{
 }
 .resultContainer{
     width: 100%;
-    background-color: rgba(var(--secondary),0.1);
+    background-color: rgba(var(--secondary),1);
     padding: 20px;
     border-radius: 20px;
     display: none;
+    height: 400px;
 }
 .resultContainer.show{
     display: block;
@@ -492,7 +303,7 @@ span a:hover{
     font-family: var(--h);
     font-weight: bolder;
     margin: 0;
-    max-width: 140px;
+    width: 140px;
     border: 2px solid rgb(var(--white));
     border-radius: 10px;
     padding: 2px 5px;
@@ -503,13 +314,14 @@ span a:hover{
     display: block;
 }
 .CorI:nth-child(2){
-    background-color: rgb(239, 83, 80);
-    
+    background-color: rgb(239, 83, 80); 
 }
 .score{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 .TryBtn{
     width: 100px;
@@ -519,7 +331,8 @@ span a:hover{
     border: none;
     border-radius: 5px;
     display: block;
-    margin: auto;
+    
+    transition: 0.3s ease;
 }
 .TryBtn:hover{
     scale: 95%;
@@ -545,6 +358,7 @@ span a:hover{
     color: rgb(var(--black));
     border-radius: 5px;
     font-weight: 500;
+    transition: 0.3s ease-in-out;
 }
 #submit:hover{
     scale: 95%;

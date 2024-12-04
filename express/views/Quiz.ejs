@@ -1,175 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GeoChallenge</title>
-    <link rel="icon" href= "/images/swords.png" type="image/x-icon" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="icon" href="/images/swords.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/Quiz.css">
 </head>
+
 <body>
-   <!-- navigation bar -->
-   <nav id="NavBar">
-    <a href="/" id="AppTitle" >GeoQuest</a>
-    <div id="LinkContainer">
-        <a href="/" class="LinkActive">Home</a>
-        <a href="/LearnMoreRouter">Learn More</a>
-        <a href="/AboutRouter">About</a>
-        <a href="/QuizGenRouter">GeoChallenge</a>
-        
-    </div>
-    <button class="RegisterBtn" id="HideBtn">Sign In</button>
-    <!-- <div class="dropdown" id="HideUserBtn">
-        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            Username
-        </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li class="LogoutBtn dropdown-item">Log out</li>                        
-            </ul>
-    </div> -->
-    <i class="fa-solid fa-bars" id="BarBtn"></i>
-    <i class="fa-solid fa-x" id=XBtn></i>
-</nav>
-<ul id="DropDownLinks">
-    <li class="DropDownLink"><a href="/">Home</a></li>
-    <li class="DropDownLink"><a href="/LearnMoreRouter">Learn More</a></li>
-    <li class="DropDownLink"><a href="/AboutRouter">About</a></li>
-    <li class="DropDownLink"><a href="/QuizGenRouter">GeoChallenge</a></li>
-    <li class="DropDownLink"><button class="RegisterBtn">Sign In</button></li>
-     <!-- <li class="DropDownLink">
-        <div class="dropdown Navdropdown">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Username
-            </button>
+    <!-- navigation bar -->
+    <nav id="NavBar">
+        <a href="/" id="AppTitle">GeoQuest</a>
+        <div id="LinkContainer">
+            <a href="/">Home</a>
+            <a href="/LearnMoreRouter">Learn More</a>
+            <a href="/AboutRouter">About</a>
+            <a href="/QuizGenRouter" class="LinkActive">GeoChallenge</a>
+
+        </div>
+        <% if (IfLogIn) { %>
+            <!-- Show Button 2 (Dropdown) if logged in -->
+            <div class="dropdown" id="HideUserBtn">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <%= Username %>
+                </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li class="LogoutBtn dropdown-item">Log out</li>                        
+                    <li class="LogoutBtn dropdown-item" onclick="window.location.href='/LogoutRouter'">Log out</li>
                 </ul>
-        </div>
-     </li> -->
-</ul>
-
-<div class="OuterContainer">
-
-    <div class="InnerContainer">
-
-        <div class="row SignInContainer">
-            <div class="col-md-6 col-sm-12 ImageContainer">
-                <h1 class="ImageContainerHeading">GeoQuest</h1>
-                <p class="ImageContainerDescription">"Test your geography knowledge with our ultimate quiz!"</p>
             </div>
-            <div class="col-md-6 col-sm-12 FormContainer">
-                <i class="fa-solid fa-x XFormBtn" id=""></i>
-                <h4 class="SignInHead">Sign In</h4>
+            <% } else { %>
+                <!-- Show Button 1 (Sign In) if not logged in -->
+                <button class="RegisterBtn" id="HideBtn" onclick="window.location.href='/SignInRouter'">Sign In</button>
+                <% } %>
 
-                <form action="">
-                    <div class="InputContainer">
-                        <label for="Username">Username:</label>
-                        <input type="text" name="Username" required>
-                    </div>
+                    <i class="fa-solid fa-bars" id="BarBtn"></i>
+                    <i class="fa-solid fa-x" id=XBtn></i>
+    </nav>
 
-                    <div class="InputContainer">
-                        <label for="Password">Password:</label>
-                        <input type="password" name="Password" required>
-                    </div>
-
-                    <span>New to GeoQuest? <p class="SignUpLink">Join GeoQuest!</p></span>
-
-                    <button type="submit" class="SignInBtn">Sign In</button>
-                </form>
-            </div>
-        </div>
-
-        <div class="row SignUpContainer">
-            <div class="col-sm-12 FormContainer">
-                <h4 class="SignInHead">Sign Up</h4>
-                <form action="">
-                    <div class="InputContainer">
-                        <label for="Username">Username:</label>
-                        <input type="text" name="CreateUsername" required>
-                    </div>
-
-                    <div class="InputContainer">
-                        <label for="Password">Password:</label>
-                        <input type="password" name="CreatePassword" required>
-                    </div>
-
-                    <div class="InputContainer">
-                        <label for="Password">Confirm Password:</label>
-                        <input type="password" name="CreateConfirmPassword" required>
-                    </div>
-
-                    <span>Already a GeoQuest Member? <p class="SignInLink">Sign In</p></span>
-
-                    <button type="submit" class="SignInBtn">Sign Up</button>
-                </form>
-            </div>
-            <div class="col-md-6 col-sm-12 ImageContainer">
-                <i class="fa-solid fa-x XFormBtn" ></i>
-
-                <div class="sideImages">
-                    <img src="/images/Learn.png" alt="">
-                    <p>Learn</p>
-                    <img src="/images/Explore.png" alt="">
-                    <p>Explore</p>
-                    <img src="/images/Conquer.png" alt="">
-                    <p>Conquer</p>
+    <ul id="DropDownLinks">
+        <li class="DropDownLink"><a href="/">Home</a></li>
+        <li class="DropDownLink"><a href="/LearnMoreRouter">Learn More</a></li>
+        <li class="DropDownLink"><a href="/AboutRouter">About</a></li>
+        <li class="DropDownLink"><a href="/QuizGenRouter">GeoChallenge</a></li>
+        <% if (IfLogIn) { %>
+            <li class="DropDownLink Logout">
+                <div class="dropdown Navdropdown">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <%= Username %>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li class="LogoutBtn dropdown-item" onclick="window.location.href='/LogoutRouter'">Log out</li>
+                    </ul>
                 </div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
+            </li>
+            <% } else { %>
+                <li class="DropDownLink Register"><button class="RegisterBtn"
+                        onclick="window.location.href='/SignInRouter'">Sign In</button></li>
+                <% } %>
+    </ul>
 
     <div class="container-fluid mainContent">
         <div class="resultContainer">
             <h5>Result:</h5>
             <div class="row">
-                <div class="col-12 col-md-6">
-                    <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                <div class="col-12 col-md-6" style="height: 300px;">
+                    <canvas id="myChart" style="width:100%;max-width:600px; height: 350px;"></canvas>
                 </div>
                 <div class="col-12 col-md-6 score">
                     <p class="CorI">Correct: <span id="correct"></span></p>
                     <p class="CorI">Incorrect: <span id="incorrect"></span></p>
                     <p id="Score">You've got 60% (30/60)</p>
-                    <button class = "TryBtn" onclick="window.location.href='/QuizGenRouter'">Try again?</button>
+                    <button class="TryBtn" onclick="window.location.href='/QuizRouter'">Try again?</button>
                 </div>
             </div>
-            
+
         </div>
 
         <h4 id="Review">Review your Answers</h4>
 
-        <%  let item = 0; %>
-        <% questions.forEach(question => { %>
-            <div class="quizContainer">
-              <p><%= question.question %></p>
-              <div class="choicesContainer">
-                <% 
-                // Combine correct and incorrect answers into one array
-                const choices = [question.correct_answer, ...question.incorrect_answers];
-                
-                // Shuffle the answers in place using JavaScript's sort method
-                choices.sort(() => Math.random() - 0.5); 
-                item++;
-                %>
-                <% choices.forEach(answer => { %>
-                  <input type="radio" id="<%= answer + item %>" name="<%= question.question %>" value="<%= answer %>">
-                  <label for="<%=  answer + item %>"><i class="fa-solid RightWrong"></i> <%= answer %></label>
-                <% }); %>
-              </div>
-              <div class="answerContainer">
-                <p>Nice try! The correct answer is <%= question.correct_answer %></p>
-              </div>
+
+        <div class="QuizContainer">
+            <div class="QuizNav">
+                <div class="QuizNavContainers">
+                    <small>Remaining Time:</small>
+                    <p id="timerDisplay"></p>
+                </div>
+
+                <div class="QuizNavContainers">
+                    <small>Personal best:</small>
+                    <p class="HighScoreDisplay">
+                        <%= HighestScore %>
+                    </p>
+
+                </div>
+
             </div>
-          <% }); %>
-          <!-- <h3>All Done?</h3> -->
-          <button id="submit">Submit</button>
+
+            <% let item=0; %>
+                <% questions.forEach(question=> { %>
+                    <div class="QuestionContainer">
+                        <p>
+                            <%= question.question %>
+                        </p>
+                        <div class="choicesContainer">
+                            <!-- Combine correct and incorrect answers into one array -->
+                            <% const choices=[question.correct_answer, ...question.incorrect_answers]; choices.sort(()=>
+                                Math.random() - 0.5);
+                                item++;
+                                %>
+
+                                <% choices.forEach(answer=> { %>
+                                    <input type="radio" id="<%= answer + item %>" name="<%= question.question %>"
+                                        value="<%= answer %>">
+                                    <label for="<%=  answer + item %>"><i class="fa-solid RightWrong"></i>
+                                        <%= answer %>
+                                    </label>
+                                    <% }); %>
+                        </div>
+                        <div class="answerContainer">
+                            <p>Nice try! The correct answer is <%= question.correct_answer %>
+                            </p>
+                        </div>
+                    </div>
+
+                    <% }); %>
+                        <button id="submit">Submit</button>
+        </div>
+        <!-- <h3>All Done?</h3> -->
+
+
     </div>
 
     <footer>
@@ -190,74 +163,43 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>   
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                crossorigin="anonymous"></script>
     <script>
         const BarBtn = document.querySelector('#BarBtn');
         const XBtn = document.querySelector('#XBtn');
         const DropDownLinks = document.querySelector('#DropDownLinks');
 
-        BarBtn.onclick = function(){    
+        BarBtn.onclick = function () {
             XBtn.classList.toggle("active");
             BarBtn.classList.toggle("inactive");
             DropDownLinks.classList.add("active");
         }
 
-        XBtn.onclick = function(){    
+        XBtn.onclick = function () {
             XBtn.classList.toggle("active");
             BarBtn.classList.toggle("inactive");
             DropDownLinks.classList.remove("active");
         }
 
-         
-        const RegisterBtns = document.querySelectorAll(".RegisterBtn");
-        const InnerContainer = document.querySelector(".InnerContainer");
-        const OuterContainer = document.querySelector(".OuterContainer");
-        const SignInContainer = document.querySelector(".SignInContainer");
-        const SignUpContainer = document.querySelector(".SignUpContainer");
-        const XFormBtns = document.querySelectorAll(".XFormBtn");
-        const SignUpLink = document.querySelector(".SignUpLink");
-        const SignInLink = document.querySelector(".SignInLink")
-
-        RegisterBtns.forEach(RegisterBtn => {
-            RegisterBtn.onclick = function(){
-            OuterContainer.classList.add("active");
-            InnerContainer.classList.add("active");
-            SignInContainer.classList.add("active");
-            document.body.classList.add("noScroll");
-            }
-        });
-        
-
-        XFormBtns.forEach(XFormBtn => {
-            XFormBtn.onclick = function(){
-            document.body.classList.remove("noScroll");
-            OuterContainer.classList.remove("active");
-            InnerContainer.classList.remove("active");
-            SignUpContainer.classList.remove("active");
-            SignInContainer.classList.remove("active");
-        }
-        });
-
-        SignInLink.onclick = function (){
-            SignInContainer.classList.add("active");
-            SignUpContainer.classList.remove("active");
-        }
-
-        SignUpLink.onclick = function (){
-            SignInContainer.classList.remove("active");
-            SignUpContainer.classList.add("active");
-        }   
-
         const correctAnswers = JSON.parse('<%- JSON.stringify(correct_answers) %>');
+        const HighestScore = JSON.parse('<%- JSON.stringify(HighestScore) %>');
         const submitBtn = document.getElementById('submit');
         const TotalCorrect = document.getElementById('correct');
         const TotalIncorrect = document.getElementById('incorrect');
         const resultContainer = document.getElementsByClassName('resultContainer')[0];
         const ReviewHeading = document.getElementById('Review')
         const score = document.getElementById('Score');
-        
-        submitBtn.addEventListener('click', () => {
-            const quizContainers = document.querySelectorAll('.quizContainer');
+        const QuizNav = document.getElementsByClassName("QuizNav")[0];
+        var FinalScore = 0;
+        submitBtn.addEventListener('click', submit);
+        const submitTimer = setTimeout(submit, 120000);
+
+
+        function submit() {
+            const QuestionContainers = document.querySelectorAll('.QuestionContainer');
             const choicesContainer = document.querySelectorAll('.choicesContainer');
             const answerContainers = document.querySelectorAll('.answerContainer');
             let correct = 0;
@@ -265,10 +207,10 @@
 
             choicesContainer.forEach((container, index) => {
                 const checkedInput = container.querySelector('input[type="radio"]:checked');
-                const quizContainer = quizContainers[index];
+                const QuestionContainer = QuestionContainers[index];
                 const correctAnswer = correctAnswers[index];
                 const answerContainer = answerContainers[index];
-        
+
                 let label, icon;
 
                 if (checkedInput) {
@@ -276,69 +218,140 @@
                     const userAnswer = checkedInput.value;
                     label = container.querySelector('input[type="radio"]:checked + label');
                     icon = container.querySelector('input[type="radio"]:checked + label i');
-                    
+
                     if (userAnswer == correctAnswer) {
                         // Mark as correct
-                        quizContainer.classList.add('correct');
+                        QuestionContainer.classList.add('correct');
                         label.classList.add("correct");
                         icon.classList.add("fa-check");
                         correct++;
                     } else {
                         // Mark as incorrect
-                        quizContainer.classList.add('incorrect');
+                        QuestionContainer.classList.add('incorrect');
                         label.classList.add("incorrect");
                         icon.classList.add("fa-x");
                         incorrect++;
                         answerContainer.classList.add('show');
                     }
-                }else{
+                } else {
                     // Mark as incorrect
-                    quizContainer.classList.add('incorrect');
+                    QuestionContainer.classList.add('incorrect');
                     incorrect++;
                     answerContainer.classList.add('show');
                 }
-                        // Disable all radio buttons after submission
+                // Disable all radio buttons after submission
                 const allInputs = container.querySelectorAll('input[type="radio"]');
                 allInputs.forEach(input => {
                     input.disabled = true;
                 });
             });
-
+            FinalScore = Math.round((remainingMilliseconds * correct) / 100);
             displayResult(correct, incorrect);
             window.scrollTo(0, 0);
             submitBtn.classList.add('hide');
             ReviewHeading.classList.add('show');
-        });
-    
+            clearInterval(timerInterval);
+            ShowResult(FinalScore, correct, incorrect);
+        };
 
-    function displayResult(Correct, Incorrect,) {
 
-        // Score Chart
-        const xValues = ["Correct", "Incorrect"];
-        const yValues = [Correct, Incorrect];
-        const barColors = ["rgb(46, 204, 113)", "rgb(231, 76, 60)"];
+        function displayResult(Correct, Incorrect,) {
 
-        new Chart("myChart", {
-            type: "doughnut",
-            data: {
-                labels: xValues,
-                datasets: [{
-                    backgroundColor: barColors,
-                    data: yValues
-                }]
+            // Score Chart
+            const xValues = ["Correct", "Incorrect"];
+            const yValues = [Correct, Incorrect];
+            const barColors = ["rgb(46, 204, 113)", "rgb(231, 76, 60)"];
+
+            new Chart("myChart", {
+                type: "pie",
+                label: 'My First Dataset',
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        backgroundColor: barColors,
+                        data: yValues,
+                        
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            labels: {
+                                color: 'rgb(255, 255, 255)', // Change the color of legend labels
+                                font: {
+                                    size: 14  // Optional: Change font size
+                                }
+                            }
+                        }
+                    }
+                }
+
+            });
+
+            var PercentageScore = Math.ceil((Correct / correctAnswers.length) * 100);
+            if (HighestScore < FinalScore) {
+                score.textContent = `PERSONAL BEST ALERT! You'got ${FinalScore} pts.`;
+            } else {
+                score.textContent = `Nice try, you've got ${FinalScore} pts.`;
             }
-        });
+            TotalCorrect.textContent = Correct;
+            TotalIncorrect.textContent = Incorrect;
+            resultContainer.classList.add('show');
+            QuizNav.classList.add("hide");
+        }
 
-        var PercentageScore = Math.ceil((Correct / correctAnswers.length) * 100);
-        score.textContent = `You've got ${PercentageScore}% (${Correct}/${correctAnswers.length}).`;
-        TotalCorrect.textContent = Correct;
-        TotalIncorrect.textContent = Incorrect;
-        resultContainer.classList.add('show');
+        // Timer
+        let timerInterval;
+        let remainingMilliseconds = 120000; // 2 minutes in milliseconds
+        const startTime = Date.now();
+        timerInterval = setInterval(() => {
+            const elapsedTime = Date.now() - startTime;
+            remainingMilliseconds = Math.max(0, (120000) - elapsedTime);
 
-    }
+            if (remainingMilliseconds === 0) {
+                clearInterval(timerInterval);
+                console.log("Timer finished");
+            }
+
+            displayRemainingTime(remainingMilliseconds);
+        }, 100);
+
+
+        function displayRemainingTime(ms) {
+            const minutes = Math.floor(ms / (60 * 1000));
+            const seconds = Math.floor((ms % (60 * 1000)) / 1000);
+            document.getElementById("timerDisplay").textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function ShowResult(FinalScore, Correct, Incorrect) {
+            const ScoreSummary = {
+                FinalScore: FinalScore,
+                Correct: Correct,
+                Incorrect: Incorrect,
+            };
+
+
+            fetch('/ResultRouter', {
+                method: 'POST',  // Using POST instead of GET
+                headers: {
+                    'Content-Type': 'application/json', // Sending JSON data
+                },
+                body: JSON.stringify(ScoreSummary), // Convert data object to JSON string
+            })
+                .then(response => response.json())
+                .then(result => {
+                    console.log('Success:', result);
+                    alert(result.message); // Show success or error message
+                })
+                .catch(error => console.error('Error:', error));
+
+        }
+
     </script>
 
-   
-    
 </body>
+
 </html>

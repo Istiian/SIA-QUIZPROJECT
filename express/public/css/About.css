@@ -34,8 +34,6 @@ body{
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
-    
-
 }
 #NavBar{
     width: 100%;
@@ -82,7 +80,10 @@ body{
     cursor: pointer;
     color: rgba(var(--primary), 1);
 }
-
+.LogoutBtn:active, .LogoutBtn:hover{
+    background-color: rgba(var(--primary),0.2);
+    cursor: pointer;
+}
 #linkContainer{
     display: flex;
     justify-content: space-between;
@@ -94,6 +95,11 @@ body{
     margin-right: 20px;
     cursor: pointer;
 }
+
+.ButtonContainer{
+    display: flex;
+    gap: 10px;
+}
 .RegisterBtn{
     width: 100px;
     height: 40px;
@@ -101,7 +107,7 @@ body{
     border: 3px solid rgb(var(--accent));
     color: rgb(var(--accent));
     font-weight: bold;
-    border-radius: 20px;
+    border-radius: 10px;
     transition: 0.3s ease;
 }
 .RegisterBtn:hover{
@@ -109,6 +115,21 @@ body{
     background-color: rgba(var(--primary),0.9);
     border: none;
     color: rgb(var(--white));
+}
+.LoginBtn{
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: rgb(var(--accent));
+    color: rgb(var(--primary));
+    font-weight: bold;
+    border: rgb(var(--primary));
+    transition: 0.3s ease;
+}
+.LoginBtn:hover{
+    background-color: rgba(var(--primary), 0.3);
+    color: rgb(var(--accent));
+    scale: 95%;
 }
 #BarBtn:hover{
     color: var(--primary);
@@ -148,7 +169,7 @@ body{
     width: 100%;
 }
 .dropdown{
-    width: 120px;
+    width: auto;
     text-overflow: ellipsis;
     height: 40px;
     background-color: rgb(var(--accent));
@@ -156,7 +177,7 @@ body{
     color: rgb(var(--primary));
     font-weight: bold;
     border-radius: 10px;
-    transition: transform 0.3s ease, opacity 0.3s ease-in-out;
+    transition: 0.3s ease;
 }
 .dropdown:hover{
     background-color: rgba(var(--accent),0.9);
@@ -166,243 +187,7 @@ body{
     margin-inline: auto;
 }
 
-/* Sign In and Sign Up Container */
-
-.noScroll{
-    overflow: hidden;
-}
-.OuterContainer{
-    width: 100%;
-    height: 100%;
-    background-color: rgba(var(--black),0.8);
-    color: var(--white);
-    padding: 0px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    z-index: 3;
-    opacity: 0;
-    visibility: hidden;
-    
-}
-.OuterContainer.active{
-    opacity: 1;
-    visibility: visible;
-}
-
-.InnerContainer{
-    width: 100%;
-    max-width: 700px;
-    
-    height: auto;
-    background-color: rgba(var(--secondary),1);
-    border-radius: 20px;
-    position: relative;
-    top: 25%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(0.5);
-    transition: 0.3s ease;
-}
-.InnerContainer.active{
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
-}
-.SignInContainer{
-    width: 100%;
-    position: absolute;
-    background-color: rgba(var(--secondary),1);
-    border-radius: 20px;
-    z-index: 4;
-    transition: 0.3s ease;
-    visibility: hidden;
-    opacity: 0;
-    transform: scale(0.5);
-}
-.SignInContainer.active{
-    visibility: visible;
-    opacity: 1;
-    transform: scale(1);
-}
-.SignUpContainer{
-    width: 100%;
-    position: absolute;
-    background-color: rgba(var(--secondary),1);
-    border-radius: 20px;
-    z-index: 3;
-    visibility: hidden;
-    opacity: 0;
-    transform: scale(0.5);
-    
-}
-.SignUpContainer.active{
-    visibility: visible;
-    opacity: 1;
-    transform: scale(1);
-}
-.SignUpContainer .FormContainer{
-    width: calc(100% - 70px)
-}
-.SignUpContainer .ImageContainer{
-    width: 70px;
-    background-color: rgb(var(--primary));
-    border-radius: 0px 20px 20px 0px;
-}
-.SignUpContainer .sideImages{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 55px;
-}
-.sideImages img{
-    width: 50px;
-    height: 50px;
-    margin-inline: auto;
-    margin-top: 20px;
-}
-.sideImages p{
-    text-align: center;
-    font-size: 10px;
-}
-.XFormBtn{
-    font-size: 15px;
-    float: right;
-    padding: 5px;
-    border-radius: 50%;
-    margin-top: 10px;
-    cursor: pointer;
-}
-#XFormBtn:hover{
-    background-color: rgba(var(--primary),0.3);
-}
-.SignInContainer .ImageContainer{
-    width: 50%;
-    background:url("/images/GeoQuest.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 20px 0px 0px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.SignInContainer .FormContainer{
-    width: 50%;
-    border-radius: 0px 20px 20px 0px;
-}
-
-.ImageContainerHeading{
-    color: rgb(var(--white));
-    font-family: var(--h);
-    font-size: var(--h2);
-    font-weight: bold;
-}
-.ImageContainerDescription{
-    color: rgb(var(--white));
-    font-family: var(--p);
-    font-size: var(--label);
-    text-align: center;
-}
-.SignInHead{
-    font-size: var(--h4);
-    font-family: var(--h);
-    color: rgb(var(--white));
-    
-    font-weight: bold;
-    text-align: center;
-    margin-top: 30px;
-}
-.InputContainer{
-    flex-direction: column;
-    display: flex;
-    gap: 5px;
-    margin-bottom: 10px;
-}
-
-.InputContainer label{
-    font-family: var(--p);
-    color: rgb(var(--white));
-    font-size:var(--label);
-}
-.InputContainer input{
-    width: 100%;
-    height: 30px;
-    border: 2px solid rgba(var(--primary), 1);
-    background-color: rgba(var(--primary), 0.3);
-    color: white;
-    padding: 3px;
-}
-.SignInBtn{
-    width: 100px;
-    background-color: rgb(var(--accent));
-    color: rgb(var(--black));
-    height: 30px;
-    border-radius: 15px;
-    border: none;
-    margin-top: 10px;
-    position: relative;
-    left: calc(100% - 100px);
-    transition: 0.3s ease;
-    margin-bottom: 20px;
-}
-.SignInBtn:hover{
-    scale: 95%;
-}
-form{
-    display: flex;
-    flex-direction: column;
-}
-span{
-    font-size: var(--label);
-    color: rgb(var(--white));
-    font-family: var(--p);
-    margin-top: 5px;
-}
-span p{
-    text-decoration: none;
-    font-size: var(--label);
-    color: rgb(var(--accent));
-    font-family: var(--p);
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.3s ease;
-    display: inline;
-}
-span a:hover{
-    color: rgba(var(--primary), 1);
-}
-@media only screen and (max-width: 900px){
-    #NavBar{
-        justify-content: space-between;
-    }
-    #LinkContainer{
-        display: none;
-    }#BarBtn{
-        display: inline-block;
-    }#HideBtn{
-        display: none;
-    }#HideUserBtn{
-        display: none;
-    }
-}
-@media screen and (max-width: 550px) {
-    .SignInContainer .ImageContainer{
-        display: none;
-    }.SignInContainer .FormContainer{
-        width: 100%;
-    }
-}
-
-
 /* content */
-
 .container-fluid{
     max-width: 900px;
     max-height: 1300px;

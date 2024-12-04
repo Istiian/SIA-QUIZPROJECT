@@ -34,7 +34,7 @@ body{
     background-color: rgb(var(--primary));
     display: flex;
     flex-direction: column;
-    min-height: 200vh;
+    min-height: 100vh;
     margin: 0;
     color: rgb(var(--white));
 }
@@ -45,7 +45,6 @@ body{
     height: 60px;
     justify-content: space-around;
     align-items: center;
-    
 }
 #NavBar img{
     width: 300px;
@@ -95,6 +94,10 @@ body{
     margin-right: 20px;
     cursor: pointer;
 }
+.ButtonContainer{
+    display: flex;
+    gap: 10px;
+}
 .RegisterBtn{
     width: 100px;
     height: 40px;
@@ -102,7 +105,7 @@ body{
     border: 3px solid rgb(var(--accent));
     color: rgb(var(--accent));
     font-weight: bold;
-    border-radius: 20px;
+    border-radius: 10px;
     transition: 0.3s ease;
 }
 .RegisterBtn:hover{
@@ -110,6 +113,21 @@ body{
     background-color: rgba(var(--primary),0.9);
     border: none;
     color: rgb(var(--white));
+}
+.LoginBtn{
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: rgb(var(--accent));
+    color: rgb(var(--primary));
+    font-weight: bold;
+    border: rgb(var(--primary));
+    transition: 0.3s ease;
+}
+.LoginBtn:hover{
+    background-color: rgba(var(--primary), 0.3);
+    color: rgb(var(--accent));
+    scale: 95%;
 }
 #BarBtn:hover{
     color:rgb(var(--primary));
@@ -149,7 +167,7 @@ body{
     width: 100%;
 }
 .dropdown{
-    width: 120px;
+    width: auto;
     text-overflow: ellipsis;
     height: 40px;
     background-color: rgb(var(--accent));
@@ -170,42 +188,30 @@ body{
 /* contents */
 
 /* Sign In and Sign Up Container */
-.OuterContainer{
+
+.validation{
+    color: rgb(var(--white));
     width: 100%;
-    height: 100%;
-    background-color: rgba(var(--black),0.8);
-    color: var(--white);
-    padding: 0px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    z-index: 3;
-    opacity: 0;
-    visibility: hidden;
-    
-}
-.OuterContainer.active{
-    opacity: 1;
-    visibility: visible;
+    height: auto;
+    background-color: rgba(220, 20, 60, 0.5);
+    border: 2px solid rgb(220, 20, 60);
+    padding: 10px;
+    font-size: var(--small);
+    text-align: center;
 }
 
 .InnerContainer{
-    width: 100%;
+    width: 90%;
     max-width: 700px;
-    
+    margin-inline: auto;
     height: auto;
-    background-color: rgba(var(--secondary),1);
+    margin-top: 100px;
     border-radius: 20px;
     position: relative;
-    top: 25%;
-    display: flex;
     flex-direction: column;
     gap: 10px;
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(0.5);
-    transition: 0.3s ease;
+    
+    
 }
 .InnerContainer.active{
     opacity: 1;
@@ -217,16 +223,18 @@ body{
     position: absolute;
     background-color: rgba(var(--secondary),1);
     border-radius: 20px;
-    z-index: 4;
+    z-index: 1;
     transition: 0.3s ease;
-    visibility: hidden;
-    opacity: 0;
-    transform: scale(0.5);
-}
-.SignInContainer.active{
+    display: flex;
     visibility: visible;
     opacity: 1;
     transform: scale(1);
+    
+}
+.SignInContainer.inactive{
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0.5);
 }
 .SignUpContainer{
     width: 100%;
@@ -234,10 +242,10 @@ body{
     background-color: rgba(var(--secondary),1);
     border-radius: 20px;
     z-index: 3;
+    display: flex;
     visibility: hidden;
     opacity: 0;
     transform: scale(0.5);
-    
 }
 .SignUpContainer.active{
     visibility: visible;
@@ -245,18 +253,23 @@ body{
     transform: scale(1);
 }
 .SignUpContainer .FormContainer{
-    width: calc(100% - 70px)
+    width: calc(100% - 70px);
+    padding: 10px;
 }
 .SignUpContainer .ImageContainer{
     width: 70px;
     background-color: rgb(var(--primary));
     border-radius: 0px 20px 20px 0px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
 }
 .SignUpContainer .sideImages{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 55px;
+    
+    
 }
 .sideImages img{
     width: 50px;
@@ -273,7 +286,7 @@ body{
     float: right;
     padding: 5px;
     border-radius: 50%;
-    margin-top: 10px;
+    
     cursor: pointer;
 }
 #XFormBtn:hover{
@@ -290,11 +303,13 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 10px;
 }
 
 .SignInContainer .FormContainer{
     width: 50%;
     border-radius: 0px 20px 20px 0px;
+    padding: 10px;
 }
 
 .ImageContainerHeading{
@@ -364,7 +379,7 @@ span{
     font-family: var(--p);
     margin-top: 5px;
 }
-span p{
+span .SignUpLink{
     text-decoration: none;
     font-size: var(--label);
     color: rgb(var(--accent));

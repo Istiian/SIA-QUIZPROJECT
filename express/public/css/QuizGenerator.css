@@ -1,29 +1,38 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-:root{
-    --primary:	22, 66, 60;
+
+:root {
+    --primary: 22, 66, 60;
     --secondary: 38, 114, 105;
-    --accent: 255,193,7; 
-    --black: 21,21,21;
-    --white:252,252,252;
-    --p:"Source Sans Pro", sans-serif;
-    --h:"Montserrat", sans-serif;
-    --h1: clamp(2.5rem, 5vw, 4rem);  /* Adjusts between 40px and 64px */
-    --h2: clamp(2rem, 4vw, 3rem);    /* Adjusts between 32px and 48px */
-    --h3: clamp(1.5rem, 3vw, 2.25rem); /* Adjusts between 24px and 36px */
-    --h4: clamp(1.25rem, 2.5vw, 1.875rem); /* Adjusts between 20px and 30px */
-    --body: clamp(1rem, 2vw, 1.125rem);  /* Adjusts between 16px and 18px */
-    --label: clamp(0.875rem, 1.5vw, 1rem);  /* Adjusts between 14px and 16px */
-    --link: clamp(1rem, 2vw, 1.125rem);  /* Adjusts between 16px and 18px */
-    --small: clamp(0.75rem, 1vw, 0.875rem);  /* Adjusts between 12px and 14px */
-  
+    --accent: 255, 193, 7;
+    --black: 21, 21, 21;
+    --white: 252, 252, 252;
+    --p: "Source Sans Pro", sans-serif;
+    --h: "Montserrat", sans-serif;
+    --h1: clamp(2.5rem, 5vw, 4rem);
+    /* Adjusts between 40px and 64px */
+    --h2: clamp(2rem, 4vw, 3rem);
+    /* Adjusts between 32px and 48px */
+    --h3: clamp(1.5rem, 3vw, 2.25rem);
+    /* Adjusts between 24px and 36px */
+    --h4: clamp(1.25rem, 2.5vw, 1.875rem);
+    /* Adjusts between 20px and 30px */
+    --body: clamp(1rem, 2vw, 1.125rem);
+    /* Adjusts between 16px and 18px */
+    --label: clamp(0.875rem, 1.5vw, 1rem);
+    /* Adjusts between 14px and 16px */
+    --link: clamp(1rem, 2vw, 1.125rem);
+    /* Adjusts between 16px and 18px */
+    --small: clamp(0.75rem, 1vw, 0.875rem);
+    /* Adjusts between 12px and 14px */
+
 }
 
 /* Navigation */
-body{
+body {
     /* background: linear-gradient(180deg, rgba(224,224,224,1) 27%, rgba(255,255,255,1) 54%); */
     background: url('/images/Background.png');
     background-repeat: no-repeat;
@@ -36,83 +45,117 @@ body{
     margin: 0;
     color: rgb(var(--white));
 }
-#NavBar{
+
+#NavBar {
     width: 100%;
     display: flex;
     background-color: rgba(var(--secondary), 0.8);
     height: 60px;
     justify-content: space-around;
     align-items: center;
-    
+
 }
-#NavBar img{
+
+#NavBar img {
     width: 300px;
-    height:50px;
+    height: 50px;
     margin-left: 20px;
 }
-#AppTitle{
+
+#AppTitle {
     font-size: 35px;
     font-family: var(--h);
     color: rgb(var(--white));
     text-decoration: none;
     font-weight: bold;
-    
+
     transition: 0.2s ease;
 }
-#AppTitle:hover{
+
+#AppTitle:hover {
     color: rgb(var(--primary));
 }
-#LinkContainer a{
+
+#LinkContainer a {
     text-decoration: none;
     color: rgb(var(--white));
     font-size: var(--label);
     padding: 12px;
-    margin-inline:5px;
+    margin-inline: 5px;
     font-weight: bold;
     font-family: var(--h);
     border-radius: 20px;
     transition: 0.3s ease;
 }
-.LinkActive{
-    background-color: rgba(var(--primary),0.3);
+
+.LinkActive {
+    background-color: rgba(var(--primary), 0.3);
     border-radius: 20px;
 }
-#LinkContainer a:hover{
+
+#LinkContainer a:hover {
     cursor: pointer;
     color: rgba(var(--primary), 1);
 }
 
-#linkContainer{
+#linkContainer {
     display: flex;
     justify-content: space-between;
 }
-#BarBtn{
-    font-size:30px;
+
+#BarBtn {
+    font-size: 30px;
     color: rgb(var(--white));
     display: none;
     margin-right: 20px;
     cursor: pointer;
 }
-.RegisterBtn{
+
+.ButtonContainer {
+    display: flex;
+    gap: 10px;
+}
+
+.RegisterBtn {
     width: 100px;
     height: 40px;
     background-color: rgba(var(--primary), 0.3);
     border: 3px solid rgb(var(--accent));
     color: rgb(var(--accent));
     font-weight: bold;
-    border-radius: 20px;
+    border-radius: 10px;
     transition: 0.3s ease;
 }
-.RegisterBtn:hover{
+
+.RegisterBtn:hover {
     scale: 95%;
-    background-color: rgba(var(--primary),0.9);
+    background-color: rgba(var(--primary), 0.9);
     border: none;
     color: rgb(var(--white));
 }
-#BarBtn:hover{
-    color:rgb(var(--primary));
+
+.LoginBtn {
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: rgb(var(--accent));
+    color: rgb(var(--primary));
+    font-weight: bold;
+    border: rgb(var(--primary));
+    transition: 0.3s ease;
 }
-#XBtn{
+
+.LoginBtn:hover {
+    background-color: rgba(var(--primary), 0.3);
+    color: rgb(var(--accent));
+    scale: 95%;
+}
+
+#BarBtn:hover {
+    color: rgb(var(--primary));
+}
+
+#XBtn {
     font-size: 30px;
     color: var(--white);
     display: none;
@@ -120,25 +163,28 @@ body{
     cursor: pointer;
 }
 
-#DropDownLinks li{
+#DropDownLinks li {
     list-style: none;
     animation: 1s ease;
-    
+
 }
- #DropDownLinks .DropDownLink{
+
+#DropDownLinks .DropDownLink {
     background-color: rgba(var(--primary), 1);
     width: 100%;
     color: var(--white);
     padding: 5px;
     border-bottom: 1px solid rgb(var(--white));
     display: block;
-    text-align:center;
+    text-align: center;
     transition: transform 0.3s ease, opacity 0.3s ease-in-out;
 }
-#DropDownLinks .DropDownLink:hover{
+
+#DropDownLinks .DropDownLink:hover {
     color: rgb(var(--secondary));
 }
-#DropDownLinks .DropDownLink a{
+
+#DropDownLinks .DropDownLink a {
     text-decoration: none;
     font-family: var(--h);
     font-size: 24px;
@@ -146,8 +192,9 @@ body{
     font-weight: bold;
     width: 100%;
 }
-.dropdown{
-    width: 120px;
+
+.dropdown {
+    width: auto;
     text-overflow: ellipsis;
     height: 40px;
     background-color: rgb(var(--accent));
@@ -155,340 +202,183 @@ body{
     color: rgb(var(--primary));
     font-weight: bold;
     border-radius: 10px;
-    transition: transform 0.3s ease, opacity 0.3s ease-in-out;
+    transition: 0.3s ease;
 }
-.dropdown:hover{
-    background-color: rgba(var(--accent),0.9);
+
+.dropdown:hover {
+    background-color: rgba(var(--accent), 0.9);
     scale: 95%;
 }
-.Navdropdown{
+
+.Navdropdown {
     margin-inline: auto;
 }
 
-/* Sign In and Sign Up Container */
-
-.noScroll{
-    overflow: hidden;
-}
-.OuterContainer{
+.ContentContainer {
     width: 100%;
-    height: 100%;
-    background-color: rgba(var(--black),0.8);
-    color: var(--white);
-    padding: 0px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    z-index: 3;
-    opacity: 0;
-    visibility: hidden;
-    
-}
-.OuterContainer.active{
-    opacity: 1;
-    visibility: visible;
-}
-
-.InnerContainer{
-    width: 100%;
-    max-width: 700px;
-    
-    height: auto;
-    background-color: rgba(var(--secondary),1);
-    border-radius: 20px;
-    position: relative;
-    top: 25%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(0.5);
-    transition: 0.3s ease;
-}
-.InnerContainer.active{
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
-}
-.SignInContainer{
-    width: 100%;
-    position: absolute;
-    background-color: rgba(var(--secondary),1);
-    border-radius: 20px;
-    z-index: 4;
-    transition: 0.3s ease;
-    visibility: hidden;
-    opacity: 0;
-    transform: scale(0.5);
-}
-.SignInContainer.active{
-    visibility: visible;
-    opacity: 1;
-    transform: scale(1);
-}
-.SignUpContainer{
-    width: 100%;
-    position: absolute;
-    background-color: rgba(var(--secondary),1);
-    border-radius: 20px;
-    z-index: 3;
-    visibility: hidden;
-    opacity: 0;
-    transform: scale(0.5);
-    
-}
-.SignUpContainer.active{
-    visibility: visible;
-    opacity: 1;
-    transform: scale(1);
-}
-.SignUpContainer .FormContainer{
-    width: calc(100% - 70px)
-}
-.SignUpContainer .ImageContainer{
-    width: 70px;
-    background-color: rgb(var(--primary));
-    border-radius: 0px 20px 20px 0px;
-}
-.SignUpContainer .sideImages{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 55px;
-}
-.sideImages img{
-    width: 50px;
-    height: 50px;
+    max-width: 1200px;
     margin-inline: auto;
-    margin-top: 20px;
-}
-.sideImages p{
-    text-align: center;
-    font-size: 10px;
-}
-.XFormBtn{
-    font-size: 15px;
-    float: right;
-    padding: 5px;
-    border-radius: 50%;
-    margin-top: 10px;
-    cursor: pointer;
-}
-#XFormBtn:hover{
-    background-color: rgba(var(--primary),0.3);
-}
-.SignInContainer .ImageContainer{
-    width: 50%;
-    background:url("/images/GeoQuest.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 20px 0px 0px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.SignInContainer .FormContainer{
-    width: 50%;
-    border-radius: 0px 20px 20px 0px;
-}
-
-.ImageContainerHeading{
-    color: rgb(var(--white));
-    font-family: var(--h);
-    font-size: var(--h2);
-    font-weight: bold;
-}
-.ImageContainerDescription{
-    color: rgb(var(--white));
-    font-family: var(--p);
-    font-size: var(--label);
-    text-align: center;
-}
-.SignInHead{
-    font-size: var(--h4);
-    font-family: var(--h);
-    color: rgb(var(--white));
-    
-    font-weight: bold;
-    text-align: center;
-    margin-top: 30px;
-}
-.InputContainer{
-    flex-direction: column;
-    display: flex;
-    gap: 5px;
-    margin-bottom: 10px;
-}
-
-.InputContainer label{
-    font-family: var(--p);
-    color: rgb(var(--white));
-    font-size:var(--label);
-}
-.InputContainer input{
-    width: 100%;
-    height: 30px;
-    border: 2px solid rgba(var(--primary), 1);
-    background-color: rgba(var(--primary), 0.3);
-    color: white;
-    padding: 3px;
-}
-.SignInBtn{
-    width: 100px;
-    background-color: rgb(var(--accent));
-    color: rgb(var(--black));
-    height: 30px;
-    border-radius: 15px;
-    border: none;
-    margin-top: 10px;
-    position: relative;
-    left: calc(100% - 100px);
-    transition: 0.3s ease;
-    margin-bottom: 20px;
-}
-.SignInBtn:hover{
-    scale: 95%;
-}
-form{
-    display: flex;
-    flex-direction: column;
-}
-span{
-    font-size: var(--label);
-    color: rgb(var(--white));
-    font-family: var(--p);
-    margin-top: 5px;
-}
-span p{
-    text-decoration: none;
-    font-size: var(--label);
-    color: rgb(var(--accent));
-    font-family: var(--p);
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.3s ease;
-    display: inline;
-}
-span a:hover{
-    color: rgba(var(--primary), 1);
-}
-@media only screen and (max-width: 900px){
-    #NavBar{
-        justify-content: space-between;
-    }
-    #LinkContainer{
-        display: none;
-    }#BarBtn{
-        display: inline-block;
-    }#HideBtn{
-        display: none;
-    }#HideUserBtn{
-        display: none;
-    }
-}
-@media screen and (max-width: 550px) {
-    .SignInContainer .ImageContainer{
-        display: none;
-    }.SignInContainer .FormContainer{
-        width: 100%;
-    }
-}
-
-.ContentContainer{
-    width: 90%;
-    max-width: 700px;
-    /* padding-top: 5px; */
-    margin-top: clamp(50px, 10vw, 100px);
-    background-color: rgba(var(--secondary),0.5);
+    margin-top: clamp(25px, 10vw, 50px);
     color: var(--white);
     padding: 20px;
     border-radius: 15px;
-    margin-bottom: 50px;
-    
-}
-.ContentContainer h3{
-    font-size: var(--h3);
-    font-family: var(--h);
-    color: var(--white);
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-.ContentContainer p{
-    font-size: var(--body);
-    font-family: var(--p);
-    color: var(--white);
-}
-.InputContainer{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 8px;
-}
-.InputContainer label{
-    color: var(--white);
-    font-size: var(--label);
-    font-weight: 700;
-}
-.InputContainer select, input{
-    height: 30px;
-    width: 100%;
-    padding: 3px;
-    font-family: var(--p);
-    margin-top: 5px;
-    background: rgba(var(--primary),0.5);
-    border:1px solid rgb(var(--primary)) ;
-    color: var(--white);
-}
-input{
-    padding: 6px;
-}
-input::placeholder{
-    color: lightgray;
-}
-select option{
-    background: rgba(var(--secondary),1);
-    color: var(--white);
-    padding: 5px;
-}
-select option:hover{
-    background-color: rgba(var(--primary),1);
 }
 
- .GenerateBtn{
-    width: 150px;
+.Leaderboard {
+    font-size: var(--h3);
+    font-weight: bold;
+    font-family: var(--h);
+    color: rgb(var(--white));
+    text-align: center;
+    margin-bottom: 20px
+}
+
+
+/* LEADERBOARD LEADERBOARD LEADERBOARD LEADERBOARD LEADERBOARD */
+.Leaderboard {
+    font-size: var(--h3);
+    font-weight: bold;
+    font-family: var(--h);
+    color: rgb(var(--white));
+    text-align: center;
+    margin-bottom: 20px
+}
+
+.LB {
+    margin-bottom: 5px;
+    background-color: rgba(var(--secondary),0.8);
+    border-radius: 10px;
+    height: 45px;
+    width: 100%;
+    font-weight: bold;
+    position: relative;
+    
+}
+.LBContainer{
+    margin-inline: auto;
+}
+.LBContainer .LB:nth-child(3) {
+    background-color: rgba(255, 215, 0, 0.8);
+    scale: 100%;
+    
+}
+
+.LBContainer .LB:nth-child(4) {
+    background-color: rgba(192, 192, 192, 0.8);
+    scale: 100%;
+}
+
+.LBContainer .LB:nth-child(5) {
+    background-color: rgba(205, 127, 50, 0.8);
+    scale: 100%;
+
+}
+
+
+.LBheading {
+    text-align: center;
+    font-size: var(--small);
+    font-family: var(--h);
+    margin-bottom: 5px;
+    
+}
+
+.LB .LBPlacement {
+    text-align: center;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-family: var(--p);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    
+  
+}
+.LogoutBtn:active, .LogoutBtn:hover{
+    background-color: rgba(var(--primary),0.2);
+    cursor: pointer;
+}
+.Overlay {
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    position: absolute;
+    border-radius: 10px;
+    background: linear-gradient(260deg, rgba(249,249,249,0) 30%, rgba(var(--primary),0.8) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    border: 1px  solid rgb(var(--accent))
+    
+}
+
+.LB .LBUsername {
+    text-align: center;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    font-family: var(--p);
+}
+
+.LB .LBScore {
+    text-align: center;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    font-family: var(--p);
+}
+
+.GeoContainer {
+    width: 90%;
+    min-width: 300px;
+    background-color: rgba(var(--secondary), 0.8);
+    padding: 10px;
+    border-radius: 20px;
+    height: auto;
+    margin-top: clamp(35px, 10vw, 60px);
+    margin-inline: auto;
+
+}
+
+.GenerateBtn {
+    width: 120px;
     height: 40px;
     background-color: rgb(var(--accent));
     color: rgb(var(--black));
-    outline: none;
-    border-radius: 5px;
-    float: right;
-    margin-top: 5px;
-    font-weight: 500;
-    border: none;
+    border-radius: 20px;
+    border: 1px solid rgb(var(--primary));
+    position: relative;
+    transition: 0.3s ease;
+    margin-inline: auto;
+    display: block;
 }
-.GenerateBtn:hover{
+
+.GenerateBtn:hover {
     scale: 95%;
     background-color: rgba(var(--accent), 0.9);
 }
-footer{
+
+footer {
     width: 100%;
     margin-top: auto;
     display: flex;
-    background-color: rgba(74,111,97, 0.8);
+    background-color: rgba(74, 111, 97, 0.8);
 
     --mask:
-    radial-gradient(67.08px at 50% 90px,#000 99%,#0000 101%) calc(50% - 60px) 0/120px 100%,
-    radial-gradient(67.08px at 50% -60px,#0000 99%,#000 101%) 50% 30px/120px 100% repeat-x;
-  -webkit-mask: var(--mask);
-          mask: var(--mask);
-    
+        radial-gradient(67.08px at 50% 90px, #000 99%, #0000 101%) calc(50% - 60px) 0/120px 100%,
+        radial-gradient(67.08px at 50% -60px, #0000 99%, #000 101%) 50% 30px/120px 100% repeat-x;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+
 }
-.footerContainer{
+
+.footerContainer {
     width: 50%;
     display: flex;
     justify-content: center;
@@ -497,28 +387,33 @@ footer{
     margin-top: 50px;
     margin-bottom: 20px;
 }
-.footerContainer:nth-child(1) a{
+
+.footerContainer:nth-child(1) a {
     color: var(--white);
     text-decoration: none;
     font-size: var(--link);
     padding-top: 5px;
 }
-.footerContainer:nth-child(1) a:hover{
-    color: rgb(var(--secondary));;
+
+.footerContainer:nth-child(1) a:hover {
+    color: rgb(var(--secondary));
+    ;
 }
-.footerContainer:nth-child(2) a i{
+
+.footerContainer:nth-child(2) a i {
     color: var(--white);
     font-size: var(--body);
     border-radius: 50%;
     padding: 5px;
     transition: 0.3s ease;
 }
-.footerContainer:nth-child(2) a i:hover{
+
+.footerContainer:nth-child(2) a i:hover {
     scale: 110%;
     background-color: rgba(var(--secondary), 0.3)
-    
 }
-.footerContainer p{
+
+.footerContainer p {
     color: var(--white);
 }
 
@@ -538,37 +433,49 @@ footer{
 #XBtn.fa-x.active {
     display: inline-block;
 }
-#BarBtn.fa-bars.inactive{
+
+#BarBtn.fa-bars.inactive {
     display: none;
 }
+
 #XBtn.fa-x.inactive {
     display: none;
 }
+
 #BarBtn.fa-bars.active {
     display: inline-block;
 }
+
 #DropDownLinks.active {
     opacity: 1;
     visibility: visible;
     transform: translateX(100%);
 }
-@media only screen and (max-width: 900px){
-    #NavBar{
+
+@media only screen and (max-width: 900px) {
+    #NavBar {
         justify-content: space-between;
     }
-    #LinkContainer{
-        display: none;
-    }#BarBtn{
-        display: inline-block;
-    }#HideBtn{
-        display: none;
-    }#HideUserBtn{
+
+    #LinkContainer {
         display: none;
     }
-}
-@media screen and (max-width: 991px) {
-    #pot{
-        width: 120px;
+
+    #BarBtn {
+        display: inline-block;
+    }
+
+    #HideBtn {
+        display: none;
+    }
+
+    #HideUserBtn {
+        display: none;
     }
 }
 
+@media screen and (max-width: 991px) {
+    #pot {
+        width: 120px;
+    }
+}

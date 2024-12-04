@@ -1,133 +1,83 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-    <link rel="icon" href=
-    "images/planet-earth.png"
-            type="image/x-icon" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Home</title>
+    <link rel="icon" href="images/planet-earth.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/Home.css">
 </head>
+
 <body>
     <!-- navigation bar -->
     <nav id="NavBar">
-        <a href="/" id="AppTitle" >GeoQuest</a>
+        <a href="/" id="AppTitle">GeoQuest</a>
         <div id="LinkContainer">
             <a href="/" class="LinkActive">Home</a>
             <a href="/LearnMoreRouter">Learn More</a>
             <a href="/AboutRouter">About</a>
             <a href="/QuizGenRouter">GeoChallenge</a>
-            
+
         </div>
-        <button class="RegisterBtn" id="HideBtn">Sign In</button>
-        <!-- <div class="dropdown" id="HideUserBtn">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Username
-            </button>
+        <% if (IfLogIn) { %>
+            <!-- Show Button 2 (Dropdown) if logged in -->
+            <div class="dropdown" id="HideUserBtn">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <%= Username %>
+                </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li class="LogoutBtn dropdown-item">Log out</li>                        
+                    <li class="LogoutBtn dropdown-item" onclick="window.location.href='/LogoutRouter'">Log out</li>
                 </ul>
-        </div> -->
-        <i class="fa-solid fa-bars" id="BarBtn"></i>
-        <i class="fa-solid fa-x" id=XBtn></i>
+            </div>
+            <% } else { %>
+                <!-- Show Button 1 (Sign In) if not logged in -->
+                <div class="ButtonContainer">
+                    <button class="RegisterBtn" id="HideBtn" onclick="window.location.href ='/SignUpRouter'">Sign Up</button>
+                    <button class="LoginBtn" id="HideBtn" onclick="window.location.href ='/SignInRouter'">Log In</button>
+                </div>
+                
+                <% } %>
+
+            <i class="fa-solid fa-bars" id="BarBtn"></i>
+            <i class="fa-solid fa-x" id=XBtn></i>
     </nav>
+
     <ul id="DropDownLinks">
         <li class="DropDownLink"><a href="/">Home</a></li>
         <li class="DropDownLink"><a href="/LearnMoreRouter">Learn More</a></li>
         <li class="DropDownLink"><a href="/AboutRouter">About</a></li>
         <li class="DropDownLink"><a href="/QuizGenRouter">GeoChallenge</a></li>
-        <li class="DropDownLink"><button class="RegisterBtn">Sign In</button></li>
-         <!-- <li class="DropDownLink">
-            <div class="dropdown Navdropdown">
-                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Username
-                </button>
+        <% if (IfLogIn) { %>
+            <li class="DropDownLink Logout">
+                <div class="dropdown Navdropdown">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <%= Username %>
+                    </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li class="LogoutBtn dropdown-item">Log out</li>                        
+                        <li class="LogoutBtn dropdown-item" onclick="window.location.href='/LogoutRouter'">Log out</li>
                     </ul>
-            </div>
-         </li> -->
+                </div>
+            </li>
+            <% } else { %>
+                <li class="DropDownLink Register"><button class="RegisterBtn" onclick="window.location.href='/SignUpRouter'">Sign Up</button></li>
+                <li class="DropDownLink Register"><button class="LoginBtn" onclick="window.location.href='/SignInRouter'">Log In</button></li>
+                <% } %>
     </ul>
 
-    <div class="OuterContainer">
-
-        <div class="InnerContainer">
-
-            <div class="row SignInContainer">
-                <div class="col-md-6 col-sm-12 ImageContainer">
-                    <h1 class="ImageContainerHeading">GeoQuest</h1>
-                    <p class="ImageContainerDescription">"Test your geography knowledge with our ultimate quiz!"</p>
-                </div>
-                <div class="col-md-6 col-sm-12 FormContainer">
-                    <i class="fa-solid fa-x XFormBtn" id=""></i>
-                    <h4 class="SignInHead">Sign In</h4>
-    
-                    <form action="/ProcessRouter" method="post">
-                        <div class="InputContainer">
-                            <label for="Username">Username:</label>
-                            <input type="text" name="Username" required>
-                        </div>
-    
-                        <div class="InputContainer">
-                            <label for="Password">Password:</label>
-                            <input type="password" name="Password" required>
-                        </div>
-    
-                        <span>New to GeoQuest? <p class="SignUpLink">Join GeoQuest!</p></span>
-    
-                        <button type="submit" name = "Process" value="SignIn" class="SignInBtn">Sign In</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="row SignUpContainer">
-                <div class="col-sm-12 FormContainer">
-                    <h4 class="SignInHead">Sign Up</h4>
-                    <form action="/ProcessRouter" method="post">
-                        <div class="InputContainer">
-                            <label for="Username">Username:</label>
-                            <input type="text" name="CreateUsername" required>
-                        </div>
-
-                        <div class="InputContainer">
-                            <label for="Password">Password:</label>
-                            <input type="password" name="CreatePassword" required>
-                        </div>
-
-                        <div class="InputContainer">
-                            <label for="Password">Confirm Password:</label>
-                            <input type="password" name="CreateConfirmPassword" required>
-                        </div>
-
-                        <span>Already a GeoQuest Member? <p class="SignInLink">Sign In</p></span>
-
-                        <button type="submit" name = "Process" value="SignUp" class="SignInBtn">Sign Up</button>
-                    </form>
-                </div>
-                <div class="col-md-6 col-sm-12 ImageContainer">
-                    <i class="fa-solid fa-x XFormBtn" ></i>
-
-                    <div class="sideImages">
-                        <img src="/images/Learn.png" alt="">
-                        <p>Learn</p>
-                        <img src="/images/Explore.png" alt="">
-                        <p>Explore</p>
-                        <img src="/images/Conquer.png" alt="">
-                        <p>Conquer</p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-<!-- contents -->
+    <!-- contents -->
     <div class="HeadContainer">
         <h1>Welcome to GeoQuest!</h1>
         <p>"Test your geography knowledge with our ultimate quiz!"</p>
@@ -136,18 +86,24 @@
     <div class="container-fluid mainContainer">
         <div class="Buttoncontainer">
             <h2>GeoChallenge</h2>
-            <p>Set off on an exciting adventure with our Geography quiz! Whether you’re a seasoned explorer or just starting your journey, challenge yourself and test your knowledge. Discover fascinating facts about our planet, sharpen your skills, and see how well you know the world. Are you ready to explore? Let’s begin the adventure!</p>
+            <p>Set off on an exciting adventure with our Geography quiz! Whether you’re a seasoned explorer or just
+                starting your journey, challenge yourself and test your knowledge. Discover fascinating facts about our
+                planet, sharpen your skills, and see how well you know the world. Are you ready to explore? Let’s begin
+                the adventure!</p>
             <button class="linkBtn" onclick="window.location.href='/QuizGenRouter'">GeoChallenge</button>
         </div>
 
         <div class="Buttoncontainer">
             <h2>Learn More</h2>
-            <p>Expand your knowledge and horizons, and dive into the marvels of Geography! Discover the secrets of our planet, learn about stunning landscapes, and hidden treasures. Whether you're a curious learner or a seasoned explorer, there's always something new and exciting to uncover. Let's embark on this incredible journey together and see the world like never before!</p>
+            <p>Expand your knowledge and horizons, and dive into the marvels of Geography! Discover the secrets of our
+                planet, learn about stunning landscapes, and hidden treasures. Whether you're a curious learner or a
+                seasoned explorer, there's always something new and exciting to uncover. Let's embark on this incredible
+                journey together and see the world like never before!</p>
             <button class="linkBtn" onclick="window.location.href='/LearnMoreRouterRouter'">Learn More</button>
         </div>
 
     </div>
-    
+
     <footer>
         <div class="footerContainer">
             <a href="/">Home</a>
@@ -166,65 +122,27 @@
     </footer>
 
     <!-- Scripts/JS -->
-     <script>
+    <script>
         const BarBtn = document.querySelector('#BarBtn');
         const XBtn = document.querySelector('#XBtn');
         const DropDownLinks = document.querySelector('#DropDownLinks');
 
-        BarBtn.onclick = function(){    
+        BarBtn.onclick = function () {
             XBtn.classList.toggle("active");
             BarBtn.classList.toggle("inactive");
             DropDownLinks.classList.add("active");
         }
 
-        XBtn.onclick = function(){    
+        XBtn.onclick = function () {
             XBtn.classList.toggle("active");
             BarBtn.classList.toggle("inactive");
             DropDownLinks.classList.remove("active");
         }
-
-        const RegisterBtns = document.querySelectorAll(".RegisterBtn");
-        const InnerContainer = document.querySelector(".InnerContainer");
-        const OuterContainer = document.querySelector(".OuterContainer");
-        const SignInContainer = document.querySelector(".SignInContainer");
-        const SignUpContainer = document.querySelector(".SignUpContainer");
-        const XFormBtns = document.querySelectorAll(".XFormBtn");
-        const SignUpLink = document.querySelector(".SignUpLink");
-        const SignInLink = document.querySelector(".SignInLink")
-
-        RegisterBtns.forEach(RegisterBtn => {
-            RegisterBtn.onclick = function(){
-            OuterContainer.classList.add("active");
-            InnerContainer.classList.add("active");
-            SignInContainer.classList.add("active");
-            document.body.classList.add("noScroll");
-            }
-        });
-        
-
-        XFormBtns.forEach(XFormBtn => {
-            XFormBtn.onclick = function(){
-            document.body.classList.remove("noScroll");
-            OuterContainer.classList.remove("active");
-            InnerContainer.classList.remove("active");
-            SignUpContainer.classList.remove("active");
-            SignInContainer.classList.remove("active");
-        }
-        });
-
-        SignInLink.onclick = function (){
-            SignInContainer.classList.add("active");
-            SignUpContainer.classList.remove("active");
-        }
-
-        SignUpLink.onclick = function (){
-            SignInContainer.classList.remove("active");
-            SignUpContainer.classList.add("active");
-        }   
-
-
-     </script>
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

@@ -1,131 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learn More</title>
-    <link rel="icon" href= "/images/ecology-book.png" type="image/x-icon" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="icon" href="/images/ecology-book.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/LearnMore.css">
 </head>
+
 <body>
     <!-- navigation bar -->
     <nav id="NavBar">
-        <a href="/" id="AppTitle" >GeoQuest</a>
+        <a href="/" id="AppTitle">GeoQuest</a>
         <div id="LinkContainer">
-            <a href="/" class="LinkActive">Home</a>
-            <a href="/LearnMoreRouter">Learn More</a>
+            <a href="/">Home</a>
+            <a href="/LearnMoreRouter" class="LinkActive">Learn More</a>
             <a href="/AboutRouter">About</a>
             <a href="/QuizGenRouter">GeoChallenge</a>
-            
+
         </div>
-        <button class="RegisterBtn" id="HideBtn">Sign In</button>
-        <!-- <div class="dropdown" id="HideUserBtn">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Username
-            </button>
+        <% if (IfLogIn) { %>
+
+            <div class="dropdown" id="HideUserBtn">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <%= Username %>
+                </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li class="LogoutBtn dropdown-item">Log out</li>                        
+                    <li class="LogoutBtn dropdown-item" onclick="window.location.href='/LogoutRouter'">Log out</li>
                 </ul>
-        </div> -->
-        <i class="fa-solid fa-bars" id="BarBtn"></i>
-        <i class="fa-solid fa-x" id=XBtn></i>
+            </div>
+            <% } else { %>
+
+                <div class="ButtonContainer">
+                    <button class="RegisterBtn" id="HideBtn" onclick="window.location.href ='/SignUpRouter'">Sign
+                        Up</button>
+                    <button class="LoginBtn" id="HideBtn" onclick="window.location.href ='/SignInRouter'">Log
+                        In</button>
+                </div>
+                <% } %>
+
+                    <i class="fa-solid fa-bars" id="BarBtn"></i>
+                    <i class="fa-solid fa-x" id=XBtn></i>
     </nav>
+
     <ul id="DropDownLinks">
         <li class="DropDownLink"><a href="/">Home</a></li>
         <li class="DropDownLink"><a href="/LearnMoreRouter">Learn More</a></li>
         <li class="DropDownLink"><a href="/AboutRouter">About</a></li>
         <li class="DropDownLink"><a href="/QuizGenRouter">GeoChallenge</a></li>
-        <li class="DropDownLink"><button class="RegisterBtn">Sign In</button></li>
-         <!-- <li class="DropDownLink">
-            <div class="dropdown Navdropdown">
-                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Username
-                </button>
+        <% if (IfLogIn) { %>
+            <li class="DropDownLink Logout">
+                <div class="dropdown Navdropdown">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <%= Username %>
+                    </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li class="LogoutBtn dropdown-item">Log out</li>                        
+                        <li class="LogoutBtn dropdown-item" onclick="window.location.href='/LogoutRouter'">Log out</li>
                     </ul>
-            </div>
-         </li> -->
+                </div>
+            </li>
+            <% } else { %>
+                <li class="DropDownLink Register"><button class="RegisterBtn"
+                        onclick="window.location.href='/SignUpRouter'">Sign Up</button></li>
+                <li class="DropDownLink Register"><button class="LoginBtn"
+                        onclick="window.location.href='/SignInRouter'">Log In</button></li>
+                <% } %>
     </ul>
-
-    <div class="OuterContainer">
-
-        <div class="InnerContainer">
-
-            <div class="row SignInContainer">
-                <div class="col-md-6 col-sm-12 ImageContainer">
-                    <h1 class="ImageContainerHeading">GeoQuest</h1>
-                    <p class="ImageContainerDescription">"Test your geography knowledge with our ultimate quiz!"</p>
-                </div>
-                <div class="col-md-6 col-sm-12 FormContainer">
-                    <i class="fa-solid fa-x XFormBtn" id=""></i>
-                    <h4 class="SignInHead">Sign In</h4>
-    
-                    <form action="">
-                        <div class="InputContainer">
-                            <label for="Username">Username:</label>
-                            <input type="text" name="Username" required>
-                        </div>
-    
-                        <div class="InputContainer">
-                            <label for="Password">Password:</label>
-                            <input type="password" name="Password" required>
-                        </div>
-    
-                        <span>New to GeoQuest? <p class="SignUpLink">Join GeoQuest!</p></span>
-    
-                        <button type="submit" class="SignInBtn">Sign In</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="row SignUpContainer">
-                <div class="col-sm-12 FormContainer">
-                    <h4 class="SignInHead">Sign Up</h4>
-                    <form action="">
-                        <div class="InputContainer">
-                            <label for="Username">Username:</label>
-                            <input type="text" name="CreateUsername" required>
-                        </div>
-
-                        <div class="InputContainer">
-                            <label for="Password">Password:</label>
-                            <input type="password" name="CreatePassword" required>
-                        </div>
-
-                        <div class="InputContainer">
-                            <label for="Password">Confirm Password:</label>
-                            <input type="password" name="CreateConfirmPassword" required>
-                        </div>
-
-                        <span>Already a GeoQuest Member? <p class="SignInLink">Sign In</p></span>
-
-                        <button type="submit" class="SignInBtn">Sign Up</button>
-                    </form>
-                </div>
-                <div class="col-md-6 col-sm-12 ImageContainer">
-                    <i class="fa-solid fa-x XFormBtn" ></i>
-
-                    <div class="sideImages">
-                        <img src="/images/Learn.png" alt="">
-                        <p>Learn</p>
-                        <img src="/images/Explore.png" alt="">
-                        <p>Explore</p>
-                        <img src="/images/Conquer.png" alt="">
-                        <p>Conquer</p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
     <!-- Content -->
 
     <div class="container-fluid mainContainer">
@@ -151,68 +104,122 @@
                 </ol>
             </div>
             <div class="col-12 col-md-9 ContentContainer">
-                
+
                 <section id="Intro">
                     <h3>Introduction</h3>
-                    <p>What is Geography? It is a fascinating field that explores the Earth’s physical features, climate patterns, human activities, and their interrelationships. It encompasses the study of both natural and human environments, providing insights into the world we inhabit. In this article, we will delve into the various aspects of geography, its significance, subfields, tools, applications, and recommend a comprehensive geographic book to enhance your knowledge in this subject.</p>
-                    
-                    <p>It is derived from the Greek words “geo” meaning Earth and “graphia” meaning  writing or description. It involves analyzing spatial relationships, examining the distribution of phenomena, and understanding the processes that shape our planet. Through geography, we gain insights into how natural and human factors influence landscapes, societies, and cultures.</p>
+                    <p>What is Geography? It is a fascinating field that explores the Earth’s physical features, climate
+                        patterns, human activities, and their interrelationships. It encompasses the study of both
+                        natural and human environments, providing insights into the world we inhabit. In this article,
+                        we will delve into the various aspects of geography, its significance, subfields, tools,
+                        applications, and recommend a comprehensive geographic book to enhance your knowledge in this
+                        subject.</p>
+
+                    <p>It is derived from the Greek words “geo” meaning Earth and “graphia” meaning writing or
+                        description. It involves analyzing spatial relationships, examining the distribution of
+                        phenomena, and understanding the processes that shape our planet. Through geography, we gain
+                        insights into how natural and human factors influence landscapes, societies, and cultures.</p>
                 </section>
-               
+
                 <section id="Defi">
                     <h3>Definition of Geography</h3>
-                    <p>It can be defined as the  scientific study of the Earth’s physical features, climate, ecosystems, human activities, and their spatial relationships. It examines how natural processes, such as plate tectonics, weathering, and erosion, shape the Earth’s surface, and how human activities, like urbanization and agriculture, impact the environment.</p>
+                    <p>It can be defined as the scientific study of the Earth’s physical features, climate, ecosystems,
+                        human activities, and their spatial relationships. It examines how natural processes, such as
+                        plate tectonics, weathering, and erosion, shape the Earth’s surface, and how human activities,
+                        like urbanization and agriculture, impact the environment.</p>
                 </section>
 
                 <section id="Impo">
                     <h3>Importance of Geography</h3>
-                    <p>It plays a crucial role in understanding the world we live in. It helps us comprehend the distribution of resources, population patterns, and cultural diversity across different regions. By studying, we can better comprehend the impact of climate change, plan sustainable land use, manage natural disasters, and address social, economic, and environmental challenges.</p>
+                    <p>It plays a crucial role in understanding the world we live in. It helps us comprehend the
+                        distribution of resources, population patterns, and cultural diversity across different regions.
+                        By studying, we can better comprehend the impact of climate change, plan sustainable land use,
+                        manage natural disasters, and address social, economic, and environmental challenges.</p>
                 </section>
 
-                <section  id="Subf">
+                <section id="Subf">
                     <h3>Subfields of Geography</h3>
-                    <p>It comprises several subfields that focus on different aspects of the discipline. These subfields include:</p>
+                    <p>It comprises several subfields that focus on different aspects of the discipline. These subfields
+                        include:</p>
 
-                    <h4  id="Phys">Physical Geography</h4>
-                    <p>Physical geography investigates the Earth’s physical features and natural processes. It explores landforms, climates, vegetation, soils, and biogeography. Physical geographers study phenomena such as mountains, rivers, glaciers, weather systems, and ecosystems, analyzing their formation, characteristics, and interactions.</p>
+                    <h4 id="Phys">Physical Geography</h4>
+                    <p>Physical geography investigates the Earth’s physical features and natural processes. It explores
+                        landforms, climates, vegetation, soils, and biogeography. Physical geographers study phenomena
+                        such as mountains, rivers, glaciers, weather systems, and ecosystems, analyzing their formation,
+                        characteristics, and interactions.</p>
 
-                    <h4  id="Huma">Human Geography</h4>
-                    <p>Human geography examines the relationship between humans and their environment. It investigates population dynamics, urbanization, cultural landscapes, economic activities, and political systems. Human geographers analyze factors such as migration, globalization, urban development, and cultural diffusion to understand the spatial patterns of human behavior and societal processes.</p>
+                    <h4 id="Huma">Human Geography</h4>
+                    <p>Human geography examines the relationship between humans and their environment. It investigates
+                        population dynamics, urbanization, cultural landscapes, economic activities, and political
+                        systems. Human geographers analyze factors such as migration, globalization, urban development,
+                        and cultural diffusion to understand the spatial patterns of human behavior and societal
+                        processes.</p>
 
                     <h4 id="Envi">Environmental Geography</h4>
-                    <p>Environmental geography focuses on the interaction between humans and the environment, particularly the impact of human activities on natural systems. It addresses issues such as pollution, deforestation, resource depletion, and climate change. Environmental geographers strive to develop sustainable practices and policies to mitigate environmental degradation.</p>
+                    <p>Environmental geography focuses on the interaction between humans and the environment,
+                        particularly the impact of human activities on natural systems. It addresses issues such as
+                        pollution, deforestation, resource depletion, and climate change. Environmental geographers
+                        strive to develop sustainable practices and policies to mitigate environmental degradation.</p>
                 </section>
 
                 <section id="Tool">
                     <h3>Tools and Techniques in Geography</h3>
-                    <p>Geographers employ various tools and techniques to collect, analyze, and visualize spatial data. These include:</p>
+                    <p>Geographers employ various tools and techniques to collect, analyze, and visualize spatial data.
+                        These include:</p>
 
                     <ul>
-                        <li><strong>Geographic Information Systems (GIS): </strong>GIS allows geographers to capture, store, analyze, and present spatial data, enabling them to create detailed maps and perform spatial analysis.</li>
-                        <li><strong>Remote Sensing: </strong>Remote sensing uses satellite imagery and aerial photographs to gather information about the Earth’s surface. It helps monitor changes in land cover, vegetation, and natural hazards.</li>
-                        <li><strong>Global Positioning System (GPS): </strong>GPS technology enables precise location determination, facilitating field data collection and navigation.</li>
-                        <li><strong>Cartography: </strong>Cartography involves the creation of maps, using accurate representation of geographical features and spatial relationships. Cartographers utilize advanced software and design principles to create visually appealing and informative maps.</li>
+                        <li><strong>Geographic Information Systems (GIS): </strong>GIS allows geographers to capture,
+                            store, analyze, and present spatial data, enabling them to create detailed maps and perform
+                            spatial analysis.</li>
+                        <li><strong>Remote Sensing: </strong>Remote sensing uses satellite imagery and aerial
+                            photographs to gather information about the Earth’s surface. It helps monitor changes in
+                            land cover, vegetation, and natural hazards.</li>
+                        <li><strong>Global Positioning System (GPS): </strong>GPS technology enables precise location
+                            determination, facilitating field data collection and navigation.</li>
+                        <li><strong>Cartography: </strong>Cartography involves the creation of maps, using accurate
+                            representation of geographical features and spatial relationships. Cartographers utilize
+                            advanced software and design principles to create visually appealing and informative maps.
+                        </li>
                     </ul>
                 </section>
 
                 <section id="Appl">
                     <h3>Applications of Geography</h3>
-                    <p>It has numerous practical applications in various fields. Some of the key applications include:</p>
+                    <p>It has numerous practical applications in various fields. Some of the key applications include:
+                    </p>
 
                     <ul>
-                        <li><strong>Urban Planning: </strong>Geographical analysis helps urban planners make informed decisions regarding infrastructure development, zoning, and land use patterns. It enables them to create sustainable and livable cities.</li>
-                        <li><strong>Environmental Management: </strong>Geographers contribute to environmental conservation by assessing the impact of human activities on ecosystems, identifying vulnerable areas, and proposing measures for sustainable resource management.</li>
-                        <li><strong>Disaster Management: </strong>It plays a crucial role in mitigating and responding to natural disasters. Geospatial data helps in disaster risk assessment, emergency planning, and post-disaster recovery efforts.</li>
-                        <li><strong>Transportation and Logistics: </strong>Geographic analysis aids in optimizing transportation routes, determining the most efficient distribution networks, and improving logistics operations.</li>
-                        <li><strong>Business Location Analysis: </strong>Companies use geography to identify potential markets, assess competition, and determine suitable locations for new business establishments.</li>
-                        <li><strong>Tourism and Recreation: </strong>It provides insights into tourist destinations, their unique features, and cultural attractions. It helps in developing tourism strategies and promoting sustainable tourism practices.</li>
+                        <li><strong>Urban Planning: </strong>Geographical analysis helps urban planners make informed
+                            decisions regarding infrastructure development, zoning, and land use patterns. It enables
+                            them to create sustainable and livable cities.</li>
+                        <li><strong>Environmental Management: </strong>Geographers contribute to environmental
+                            conservation by assessing the impact of human activities on ecosystems, identifying
+                            vulnerable areas, and proposing measures for sustainable resource management.</li>
+                        <li><strong>Disaster Management: </strong>It plays a crucial role in mitigating and responding
+                            to natural disasters. Geospatial data helps in disaster risk assessment, emergency planning,
+                            and post-disaster recovery efforts.</li>
+                        <li><strong>Transportation and Logistics: </strong>Geographic analysis aids in optimizing
+                            transportation routes, determining the most efficient distribution networks, and improving
+                            logistics operations.</li>
+                        <li><strong>Business Location Analysis: </strong>Companies use geography to identify potential
+                            markets, assess competition, and determine suitable locations for new business
+                            establishments.</li>
+                        <li><strong>Tourism and Recreation: </strong>It provides insights into tourist destinations,
+                            their unique features, and cultural attractions. It helps in developing tourism strategies
+                            and promoting sustainable tourism practices.</li>
                     </ul>
                 </section>
 
                 <section id="Conc">
                     <h3>Conclusion</h3>
 
-                    <p>It is a multidimensional discipline that unravels the complexities of our planet. Through its study, we gain a deeper understanding of the Earth’s physical and human systems, their interconnections, and the challenges they face. The insights provided by geography help us make informed decisions, shape sustainable policies, and contribute to the well-being of our planet and its inhabitants. By exploring the diverse subfields of geography, utilizing advanced tools and techniques, and embracing the knowledge shared in resources like the “Geographic Book,” we can further unlock the potential of this fascinating field and address the global issues we face today.</p>
+                    <p>It is a multidimensional discipline that unravels the complexities of our planet. Through its
+                        study, we gain a deeper understanding of the Earth’s physical and human systems, their
+                        interconnections, and the challenges they face. The insights provided by geography help us make
+                        informed decisions, shape sustainable policies, and contribute to the well-being of our planet
+                        and its inhabitants. By exploring the diverse subfields of geography, utilizing advanced tools
+                        and techniques, and embracing the knowledge shared in resources like the “Geographic Book,” we
+                        can further unlock the potential of this fascinating field and address the global issues we face
+                        today.</p>
 
                 </section>
 
@@ -221,16 +228,24 @@
 
                     <div class="row">
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
-                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/93LLwiMjDko?si=l4-aJzdcxvAuaVY3"  allowfullscreen></iframe>
+                            <iframe class="embed-responsive-item"
+                                src="https://www.youtube.com/embed/93LLwiMjDko?si=l4-aJzdcxvAuaVY3"
+                                allowfullscreen></iframe>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
-                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/iHEMOdRo5u8?si=yb6soMjt3cD3pt5b"  allowfullscreen></iframe>     
+                            <iframe class="embed-responsive-item"
+                                src="https://www.youtube.com/embed/iHEMOdRo5u8?si=yb6soMjt3cD3pt5b"
+                                allowfullscreen></iframe>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
-                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/-BnuqQOSKyM?si=0qahfSVp-h9sutm5" allowfullscreen></iframe>
+                            <iframe class="embed-responsive-item"
+                                src="https://www.youtube.com/embed/-BnuqQOSKyM?si=0qahfSVp-h9sutm5"
+                                allowfullscreen></iframe>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
-                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/XNrJFAH-yaE?si=L3H2jr8Byx4D7q9_"  allowfullscreen></iframe>
+                            <iframe class="embed-responsive-item"
+                                src="https://www.youtube.com/embed/XNrJFAH-yaE?si=L3H2jr8Byx4D7q9_"
+                                allowfullscreen></iframe>
                         </div>
                     </div>
                 </section>
@@ -238,7 +253,7 @@
             </div>
         </div>
     </div>
-        
+
     <footer>
         <div class="footerContainer">
             <a href="/">Home</a>
@@ -262,58 +277,22 @@
         const XBtn = document.querySelector('#XBtn');
         const DropDownLinks = document.querySelector('#DropDownLinks');
 
-        BarBtn.onclick = function(){    
+        BarBtn.onclick = function () {
             XBtn.classList.toggle("active");
             BarBtn.classList.toggle("inactive");
             DropDownLinks.classList.add("active");
         }
 
-        XBtn.onclick = function(){    
+        XBtn.onclick = function () {
             XBtn.classList.toggle("active");
             BarBtn.classList.toggle("inactive");
             DropDownLinks.classList.remove("active");
         }
-
-        const RegisterBtns = document.querySelectorAll(".RegisterBtn");
-        const InnerContainer = document.querySelector(".InnerContainer");
-        const OuterContainer = document.querySelector(".OuterContainer");
-        const SignInContainer = document.querySelector(".SignInContainer");
-        const SignUpContainer = document.querySelector(".SignUpContainer");
-        const XFormBtns = document.querySelectorAll(".XFormBtn");
-        const SignUpLink = document.querySelector(".SignUpLink");
-        const SignInLink = document.querySelector(".SignInLink")
-
-        RegisterBtns.forEach(RegisterBtn => {
-            RegisterBtn.onclick = function(){
-            OuterContainer.classList.add("active");
-            InnerContainer.classList.add("active");
-            SignInContainer.classList.add("active");
-            document.body.classList.add("noScroll");
-            }
-        });
-
-        XFormBtns.forEach(XFormBtn => {
-            XFormBtn.onclick = function(){
-            document.body.classList.remove("noScroll");
-            OuterContainer.classList.remove("active");
-            InnerContainer.classList.remove("active");
-            SignUpContainer.classList.remove("active");
-            SignInContainer.classList.remove("active");
-        }
-        });
-
-        SignInLink.onclick = function (){
-            SignInContainer.classList.add("active");
-            SignUpContainer.classList.remove("active");
-        }
-
-        SignUpLink.onclick = function (){
-            SignInContainer.classList.remove("active");
-            SignUpContainer.classList.add("active");
-        }   
-
-     </script>
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

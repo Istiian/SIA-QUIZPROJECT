@@ -1,0 +1,17 @@
+GET http://localhost:3000/ProcessRouter
+
+###
+
+GET http://localhost:3000/ProcessRouter/674721bf863c834a793026b3
+
+
+###
+POST http://localhost:3000/ProcessRouter
+Content-Type: application/json
+
+{
+    "Username": "Istian",
+    "Password" : "ISTIAN123"
+}
+
+###
